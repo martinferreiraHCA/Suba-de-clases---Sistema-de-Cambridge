@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCA — Generador de Cuentas de Estudiantes</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --azul-siged: #242B59;
+  --azul-light: #3a4280;
+  --azul-lighter: #4e5a9e;
+  --accent: #f0c040;
+  --accent-dim: #d4a82e;
+  --bg: #0e1021;
+  --bg-card: #161830;
+  --bg-card-hover: #1c2040;
+  --bg-input: #1a1e3a;
+  --text: #e8eaf0;
+  --text-dim: #8b90b0;
+  --text-muted: #5a5f80;
+  --border: #2a2f55;
+  --border-focus: #4e5a9e;
+  --success: #34d399;
+  --success-bg: #0d3a2a;
+  --danger: #f87171;
+  --danger-bg: #3a1515;
+  --warning: #fbbf24;
+  --warning-bg: #3a2f10;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-lg: 16px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.3);
+  --font: 'DM Sans', system-ui, sans-serif;
+  --mono: 'Space Mono', monospace;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--azul-lighter); }
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, var(--azul-siged) 0%, #1a2050 100%);
+  border-bottom: 2px solid var(--accent);
+  padding: 20px 32px;
+  display: flex; align-items: center; gap: 20px;
+  position: sticky; top: 0; z-index: 100;
+}
+.header-logo {
+  width: 48px; height: 48px;
+  background: var(--accent);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 18px; color: var(--azul-siged);
+  flex-shrink: 0;
+}
+.header h1 {
+  font-size: 20px; font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.header p { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
+
+/* Navigation Tabs */
+.nav-tabs {
+  display: flex; gap: 4px;
+  background: var(--bg-card);
+  padding: 6px;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+}
+.nav-tab {
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  border: none; background: transparent;
+  color: var(--text-dim);
+  font-family: var(--font);
+  font-size: 13px; font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-tab:hover { background: var(--bg-card-hover); color: var(--text); }
+.nav-tab.active {
+  background: var(--azul-siged);
+  color: var(--accent);
+  font-weight: 600;
+}
+.nav-tab .badge {
+  background: var(--azul-lighter);
+  color: white;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.nav-tab.active .badge { background: var(--accent); color: var(--azul-siged); }
+
+/* Main content */
+.main { max-width: 1400px; margin: 0 auto; padding: 24px; }
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.card-title {
+  font-size: 16px; font-weight: 600;
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.card-title .icon { font-size: 20px; }
+
+/* Buttons */
+.btn {
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-card-hover);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 13px; font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn:hover { border-color: var(--azul-lighter); background: var(--azul-light); }
+.btn-primary {
+  background: var(--azul-siged);
+  border-color: var(--azul-lighter);
+  color: var(--accent);
+  font-weight: 600;
+}
+.btn-primary:hover { background: var(--azul-light); }
+.btn-accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--azul-siged);
+  font-weight: 700;
+}
+.btn-accent:hover { background: var(--accent-dim); }
+.btn-danger { border-color: var(--danger); color: var(--danger); }
+.btn-danger:hover { background: var(--danger-bg); }
+.btn-success { border-color: var(--success); color: var(--success); }
+.btn-success:hover { background: var(--success-bg); }
+.btn-sm { padding: 6px 12px; font-size: 12px; }
+.btn-group { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Inputs */
+input[type="text"], input[type="file"], textarea, select {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 13px;
+  padding: 10px 14px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.15s;
+}
+input:focus, textarea:focus, select:focus { border-color: var(--border-focus); }
+textarea { resize: vertical; font-family: var(--mono); font-size: 12px; }
+label {
+  display: block;
+  font-size: 12px; font-weight: 600;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.form-group { margin-bottom: 16px; }
+
+/* File drop zone */
+.drop-zone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-input);
+}
+.drop-zone:hover, .drop-zone.dragover {
+  border-color: var(--accent);
+  background: rgba(240,192,64,0.04);
+}
+.drop-zone .icon { font-size: 36px; margin-bottom: 12px; display: block; }
+.drop-zone .label { font-weight: 600; font-size: 14px; }
+.drop-zone .hint { font-size: 12px; color: var(--text-dim); margin-top: 6px; }
+
+/* Table */
+.table-container {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+th {
+  background: var(--azul-siged);
+  color: var(--accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 10px 14px;
+  text-align: left;
+  white-space: nowrap;
+  position: sticky; top: 0;
+  font-size: 11px;
+}
+td {
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+tr:hover td { background: var(--bg-card-hover); }
+td input {
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  padding: 4px 8px !important;
+  font-size: 12px !important;
+  border-radius: 4px !important;
+  width: 100%;
+  min-width: 80px;
+}
+td input:focus {
+  border-color: var(--accent) !important;
+  background: var(--bg-input) !important;
+}
+td select {
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  padding: 4px 8px !important;
+  font-size: 12px !important;
+}
+td select:focus {
+  border-color: var(--accent) !important;
+}
+
+/* Status badges */
+.status {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11px; font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.status-ok { background: var(--success-bg); color: var(--success); }
+.status-warn { background: var(--warning-bg); color: var(--warning); }
+.status-err { background: var(--danger-bg); color: var(--danger); }
+
+/* Stats row */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+}
+.stat-card .number {
+  font-size: 28px; font-weight: 700;
+  color: var(--accent);
+  font-family: var(--mono);
+}
+.stat-card .label-text {
+  font-size: 11px; color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+}
+
+/* Filter bar */
+.filter-bar {
+  display: flex; gap: 10px; align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: var(--bg-input);
+  border-radius: var(--radius);
+}
+.filter-bar select, .filter-bar input {
+  width: auto; min-width: 160px;
+}
+.filter-bar label { margin-bottom: 0; }
+
+/* Toast */
+.toast-container {
+  position: fixed; bottom: 24px; right: 24px; z-index: 1000;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.toast {
+  padding: 14px 20px;
+  border-radius: var(--radius);
+  font-size: 13px; font-weight: 500;
+  box-shadow: var(--shadow);
+  animation: slideIn 0.3s ease;
+  max-width: 400px;
+}
+.toast-success { background: #15503a; color: var(--success); border: 1px solid var(--success); }
+.toast-error { background: #501515; color: var(--danger); border: 1px solid var(--danger); }
+.toast-info { background: var(--azul-siged); color: var(--accent); border: 1px solid var(--accent); }
+@keyframes slideIn { from { transform: translateX(100%); opacity:0; } to { transform: translateX(0); opacity:1; } }
+
+/* Class keys grid */
+.keys-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+.key-card {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+}
+.key-card .class-name { font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+.key-card .class-code {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--accent);
+  background: rgba(240,192,64,0.08);
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+.key-card .class-dates { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+
+/* Progress bar */
+.progress-bar {
+  height: 6px;
+  background: var(--bg-input);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+.progress-bar .fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header { padding: 14px 16px; }
+  .main { padding: 12px; }
+  .card { padding: 16px; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Row highlight for edited */
+tr.edited td { background: rgba(240,192,64,0.04); }
+tr.edited td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+
+/* Checkbox */
+input[type="checkbox"] {
+  accent-color: var(--accent);
+  width: 16px; height: 16px;
+  cursor: pointer;
+}
+
+.hidden { display: none !important; }
+
+/* Chip for class keys */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--azul-siged);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  margin: 2px;
+}
+.chip .remove {
+  cursor: pointer; color: var(--danger);
+  font-weight: 700; font-size: 14px;
+  line-height: 1;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-logo">HCA</div>
+  <div>
+    <h1>Generador de Cuentas de Estudiantes</h1>
+    <p>Colegio y Liceo Hans Christian Andersen — Cambridge English</p>
+  </div>
+</div>
+
+<div class="nav-tabs" id="navTabs">
+  <button class="nav-tab active" data-tab="import">📥 Importar Datos</button>
+  <button class="nav-tab" data-tab="classkeys">🔑 Códigos de Clase</button>
+  <button class="nav-tab" data-tab="assign">🎯 Asignar Clases</button>
+  <button class="nav-tab" data-tab="accounts">👤 Cuentas<span class="badge" id="accountsBadge">0</span></button>
+  <button class="nav-tab" data-tab="export">📤 Exportar</button>
+</div>
+
+<div class="main">
+  <!-- PANEL 1: IMPORT -->
+  <div class="panel active" id="panel-import">
+    <div class="stats-row" id="importStats"></div>
+    
+    <div class="card">
+      <div class="card-title"><span class="icon">📁</span> Cargar Listas de Estudiantes</div>
+      <p style="font-size:13px; color:var(--text-dim); margin-bottom:16px;">
+        Cargá los archivos Excel exportados del SIGED (Datos_alumnos_primaria.xlsx y Datos_alumnos_secundaria.xlsx). 
+        También podés retomar un trabajo guardado cargando el archivo JSON de progreso.
+      </p>
+      
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px;">
+        <div class="drop-zone" id="dropPrimaria" onclick="document.getElementById('filePrimaria').click()">
+          <span class="icon">🏫</span>
+          <div class="label">Primaria</div>
+          <div class="hint">Datos_alumnos_primaria.xlsx</div>
+          <input type="file" id="filePrimaria" accept=".xlsx" style="display:none">
+        </div>
+        <div class="drop-zone" id="dropSecundaria" onclick="document.getElementById('fileSecundaria').click()">
+          <span class="icon">🎓</span>
+          <div class="label">Secundaria</div>
+          <div class="hint">Datos_alumnos_secundaria.xlsx</div>
+          <input type="file" id="fileSecundaria" accept=".xlsx" style="display:none">
+        </div>
+      </div>
+
+      <div class="drop-zone" id="dropProgress" onclick="document.getElementById('fileProgress').click()" style="border-color:var(--accent); max-width:400px;">
+        <span class="icon">💾</span>
+        <div class="label">Retomar trabajo guardado</div>
+        <div class="hint">Cargar archivo .json de progreso</div>
+        <input type="file" id="fileProgress" accept=".json" style="display:none">
+      </div>
+    </div>
+
+    <div class="card" id="previewCard" style="display:none">
+      <div class="card-title"><span class="icon">👀</span> Vista Previa de Datos Importados</div>
+      <div class="filter-bar">
+        <label>Nivel:</label>
+        <select id="previewLevel" onchange="renderPreview()">
+          <option value="all">Todos</option>
+        </select>
+        <label>Grupo:</label>
+        <select id="previewGroup" onchange="renderPreview()">
+          <option value="all">Todos</option>
+        </select>
+        <span style="flex:1"></span>
+        <span id="previewCount" style="font-size:12px; color:var(--text-dim);"></span>
+      </div>
+      <div class="table-container" style="max-height:400px; overflow-y:auto;">
+        <table>
+          <thead><tr><th>Curso</th><th>Grupo</th><th>Nro</th><th>Nombre Completo</th><th>Primer Apellido</th><th>Segundo Apellido</th><th>Primer Nombre</th></tr></thead>
+          <tbody id="previewBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 2: CLASS KEYS -->
+  <div class="panel" id="panel-classkeys">
+    <div class="card">
+      <div class="card-title"><span class="icon">📋</span> Pegar Códigos de Clase de Cambridge</div>
+      <p style="font-size:13px; color:var(--text-dim); margin-bottom:16px;">
+        Pegá el texto copiado de Cambridge con los códigos de clase. El sistema detecta automáticamente el nombre de la clase y su código. 
+        Formato esperado: nombre de clase, código (antes de "Copy"), fechas.
+      </p>
+      <div class="form-group">
+        <label>Texto de Cambridge</label>
+        <textarea id="classKeysInput" rows="12" placeholder="Pegá acá el texto de Cambridge...
+Ejemplo:
+FCE 3o EMS
+bnr9-DgnB Copy
+Mar 16, 2026
+Apr 30, 2027
+Show class details"></textarea>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="parseClassKeys()">🔍 Interpretar Códigos</button>
+        <button class="btn" onclick="clearClassKeys()">🗑️ Limpiar</button>
+      </div>
+    </div>
+
+    <div class="card" id="classKeysResult" style="display:none;">
+      <div class="card-title"><span class="icon">🔑</span> Clases Detectadas (<span id="classKeysCount">0</span>)</div>
+      <div class="keys-grid" id="classKeysGrid"></div>
+    </div>
+  </div>
+
+  <!-- PANEL 3: ASSIGN -->
+  <div class="panel" id="panel-assign">
+    <div class="card">
+      <div class="card-title"><span class="icon">🎯</span> Asignar Estudiantes a Clases Cambridge</div>
+      <p style="font-size:13px; color:var(--text-dim); margin-bottom:16px;">
+        Seleccioná un grupo escolar y asignale la clase Cambridge correspondiente. Los estudiantes del grupo recibirán el código de clase (class key) para crear sus cuentas.
+      </p>
+      
+      <div id="assignmentUI"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">📊</span> Resumen de Asignaciones</div>
+      <div id="assignmentSummary"></div>
+    </div>
+  </div>
+
+  <!-- PANEL 4: ACCOUNTS -->
+  <div class="panel" id="panel-accounts">
+    <div class="stats-row" id="accountStats"></div>
+    
+    <div class="card">
+      <div class="card-title"><span class="icon">👤</span> Tabla de Cuentas Generadas</div>
+      <p style="font-size:13px; color:var(--text-dim); margin-bottom:16px;">
+        Las cuentas se generan automáticamente. Username = apellido+hca. Contraseña = combinación segura basada en nombre+grupo. Podés editar cualquier campo haciendo clic sobre él.
+      </p>
+      
+      <div class="filter-bar">
+        <label>Clase:</label>
+        <select id="accountFilter" onchange="renderAccounts()">
+          <option value="all">Todas</option>
+        </select>
+        <label>Buscar:</label>
+        <input type="text" id="accountSearch" placeholder="Nombre, usuario..." oninput="renderAccounts()" style="max-width:200px;">
+        <span style="flex:1"></span>
+        <button class="btn btn-sm" onclick="regenerateAllPasswords()">🔄 Regenerar Contraseñas</button>
+      </div>
+      
+      <div class="table-container" style="max-height:600px; overflow-y:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:40px"><input type="checkbox" id="selectAll" onchange="toggleSelectAll()"></th>
+              <th>Clase</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+              <th>Password</th>
+              <th>Class Key</th>
+              <th style="width:60px">✓</th>
+            </tr>
+          </thead>
+          <tbody id="accountsBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 5: EXPORT -->
+  <div class="panel" id="panel-export">
+    <div class="stats-row" id="exportStats"></div>
+    
+    <div class="card">
+      <div class="card-title"><span class="icon">💾</span> Guardar Progreso</div>
+      <p style="font-size:13px; color:var(--text-dim); margin-bottom:12px;">
+        Descargá un archivo JSON con todo el estado actual (estudiantes, asignaciones, cuentas editadas) para poder retomar después.
+      </p>
+      <button class="btn btn-primary" onclick="saveProgress()">💾 Descargar Progreso (.json)</button>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">📄</span> Exportar CSV para Cambridge</div>
+      <p style="font-size:13px; color:var(--text-dim); margin-bottom:12px;">
+        Generá el archivo CSV en el formato requerido por Cambridge (New_child_accounts_template). Podés exportar por clase o todo junto.
+      </p>
+      <div class="form-group">
+        <label>Exportar clase</label>
+        <select id="exportClass">
+          <option value="all">Todas las clases</option>
+        </select>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-accent" onclick="exportCSV()">📥 Descargar CSV</button>
+        <button class="btn" onclick="previewCSV()">👁️ Vista Previa</button>
+      </div>
+      <pre id="csvPreview" style="display:none; margin-top:16px; background:var(--bg-input); padding:16px; border-radius:var(--radius-sm); font-family:var(--mono); font-size:11px; overflow-x:auto; max-height:400px; overflow-y:auto; border:1px solid var(--border);"></pre>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">🖨️</span> Listado para Imprimir por Clase</div>
+      <p style="font-size:13px; color:var(--text-dim); margin-bottom:12px;">
+        Generá un listado con usuario y contraseña para entregar a los alumnos, organizado por clase.
+      </p>
+      <button class="btn btn-primary" onclick="exportPrintable()">🖨️ Generar Listado Imprimible</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+// ===================== STATE =====================
+let state = {
+  students: [],        // All imported students
+  classKeys: {},       // { className: { code, startDate, endDate } }
+  assignments: {},     // { "curso|grupo": "className" }
+  accounts: [],        // Generated accounts with edits
+  editedAccounts: {},  // { index: { field: value } } for manual overrides
+};
+
+// ===================== NAVIGATION =====================
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+// ===================== TOAST =====================
+function toast(msg, type='info') {
+  const t = document.createElement('div');
+  t.className = 'toast toast-' + type;
+  t.textContent = msg;
+  document.getElementById('toastContainer').appendChild(t);
+  setTimeout(() => t.remove(), 4000);
+}
+
+// ===================== FILE IMPORT =====================
+function setupDropZone(dropId, inputId, handler) {
+  const dz = document.getElementById(dropId);
+  const inp = document.getElementById(inputId);
+  ['dragenter','dragover'].forEach(e => dz.addEventListener(e, ev => { ev.preventDefault(); dz.classList.add('dragover'); }));
+  ['dragleave','drop'].forEach(e => dz.addEventListener(e, ev => { ev.preventDefault(); dz.classList.remove('dragover'); }));
+  dz.addEventListener('drop', ev => { if(ev.dataTransfer.files.length) handler(ev.dataTransfer.files[0]); });
+  inp.addEventListener('change', ev => { if(ev.target.files.length) handler(ev.target.files[0]); });
+}
+
+setupDropZone('dropPrimaria', 'filePrimaria', f => importExcel(f, 'primaria'));
+setupDropZone('dropSecundaria', 'fileSecundaria', f => importExcel(f, 'secundaria'));
+setupDropZone('dropProgress', 'fileProgress', loadProgress);
+
+function importExcel(file, level) {
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const wb = XLSX.read(e.target.result, {type:'array'});
+      const ws = wb.Sheets[wb.SheetNames[0]];
+      const data = XLSX.utils.sheet_to_json(ws, {header:1, defval:''});
+      
+      // Find header row (row with "Curso")
+      let headerIdx = -1;
+      for(let i=0; i<Math.min(10, data.length); i++) {
+        if(data[i] && data[i].some(c => String(c).trim() === 'Curso')) { headerIdx = i; break; }
+      }
+      if(headerIdx === -1) { toast('No se encontró el encabezado "Curso"', 'error'); return; }
+      
+      const headers = data[headerIdx].map(h => String(h).trim());
+      const cursoIdx = headers.indexOf('Curso');
+      const grupoIdx = headers.indexOf('Grupo');
+      const nombreIdx = headers.indexOf('Nombre');
+      const ap1Idx = headers.indexOf('Primer Apellido');
+      const ap2Idx = headers.indexOf('Segundo Apellido');
+      const n1Idx = headers.indexOf('Primer Nombre');
+      const n2Idx = headers.indexOf('Segundo Nombre');
+      const nroIdx = headers.indexOf('Nro. Lista');
+      
+      // Column 9 (0-indexed) is "Nombre" (full name) in both files
+      // But there are TWO "Nombre" columns - the first one (col 9) is full name
+      // Let's use index directly for full name since headers may have duplicates
+      const fullNameIdx = level === 'primaria' ? 9 : 9;
+
+      let count = 0;
+      // Remove previous students of this level
+      state.students = state.students.filter(s => s.level !== level);
+      
+      for(let i=headerIdx+1; i<data.length; i++) {
+        const row = data[i];
+        if(!row || !row[cursoIdx]) continue;
+        const curso = String(row[cursoIdx]).trim();
+        if(!curso) continue;
+        
+        const grupo = String(row[grupoIdx] || '').trim();
+        const fullName = String(row[fullNameIdx] || '').trim();
+        const ap1 = String(row[ap1Idx] || '').trim();
+        const ap2 = String(row[ap2Idx] || '').trim();
+        const n1 = String(row[n1Idx] || '').trim();
+        const n2 = String(row[n2Idx] || '').trim();
+        
+        if(!fullName && !ap1) continue;
+        
+        state.students.push({
+          level, curso, grupo, fullName, ap1, ap2, n1, n2,
+          nro: String(row[nroIdx] || '').trim()
+        });
+        count++;
+      }
+      
+      const dz = document.getElementById(level === 'primaria' ? 'dropPrimaria' : 'dropSecundaria');
+      dz.innerHTML = `<span class="icon">✅</span><div class="label">${file.name}</div><div class="hint">${count} estudiantes importados</div>`;
+      dz.style.borderColor = 'var(--success)';
+      
+      toast(`${count} estudiantes importados de ${level}`, 'success');
+      updateImportStats();
+      updatePreviewFilters();
+      renderPreview();
+      updateAssignmentUI();
+      
+    } catch(err) {
+      toast('Error leyendo el archivo: ' + err.message, 'error');
+      console.error(err);
+    }
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+function updateImportStats() {
+  const total = state.students.length;
+  const prim = state.students.filter(s => s.level === 'primaria').length;
+  const sec = state.students.filter(s => s.level === 'secundaria').length;
+  const groups = new Set(state.students.map(s => s.curso + '|' + s.grupo)).size;
+  
+  document.getElementById('importStats').innerHTML = `
+    <div class="stat-card"><div class="number">${total}</div><div class="label-text">Total Estudiantes</div></div>
+    <div class="stat-card"><div class="number">${prim}</div><div class="label-text">Primaria</div></div>
+    <div class="stat-card"><div class="number">${sec}</div><div class="label-text">Secundaria</div></div>
+    <div class="stat-card"><div class="number">${groups}</div><div class="label-text">Grupos</div></div>
+  `;
+}
+
+function updatePreviewFilters() {
+  const levels = [...new Set(state.students.map(s => s.level))].sort();
+  const sel = document.getElementById('previewLevel');
+  sel.innerHTML = '<option value="all">Todos</option>' + levels.map(l => `<option value="${l}">${l}</option>`).join('');
+  updateGroupFilter();
+  document.getElementById('previewCard').style.display = state.students.length ? 'block' : 'none';
+}
+
+function updateGroupFilter() {
+  const level = document.getElementById('previewLevel').value;
+  const filtered = level === 'all' ? state.students : state.students.filter(s => s.level === level);
+  const groups = [...new Set(filtered.map(s => s.curso + ' ' + s.grupo))].sort();
+  const sel = document.getElementById('previewGroup');
+  sel.innerHTML = '<option value="all">Todos</option>' + groups.map(g => `<option value="${g}">${g}</option>`).join('');
+}
+
+function renderPreview() {
+  updateGroupFilter();
+  let filtered = [...state.students];
+  const level = document.getElementById('previewLevel').value;
+  const group = document.getElementById('previewGroup').value;
+  if(level !== 'all') filtered = filtered.filter(s => s.level === level);
+  if(group !== 'all') filtered = filtered.filter(s => (s.curso + ' ' + s.grupo) === group);
+  
+  document.getElementById('previewCount').textContent = filtered.length + ' estudiantes';
+  const tbody = document.getElementById('previewBody');
+  tbody.innerHTML = filtered.slice(0, 200).map(s => `
+    <tr>
+      <td>${s.curso}</td><td>${s.grupo}</td><td>${s.nro}</td>
+      <td>${s.fullName}</td><td>${s.ap1}</td><td>${s.ap2}</td><td>${s.n1}</td>
+    </tr>
+  `).join('');
+}
+
+// ===================== CLASS KEYS PARSER =====================
+function parseClassKeys() {
+  const input = document.getElementById('classKeysInput').value.trim();
+  if(!input) { toast('Pegá el texto de Cambridge primero', 'error'); return; }
+  
+  const lines = input.split('\n').map(l => l.trim()).filter(l => l);
+  const parsed = {};
+  let i = 0;
+  
+  while(i < lines.length) {
+    // Find pattern: class name, then code (before "Copy"), then dates
+    const line = lines[i];
+    
+    // Check if next line contains "Copy" - then this line is a class name
+    if(i+1 < lines.length && lines[i+1].includes('Copy')) {
+      const className = line;
+      const codeLine = lines[i+1];
+      const code = codeLine.replace(/\s*Copy\s*$/, '').trim();
+      
+      let startDate = '', endDate = '';
+      if(i+2 < lines.length && /^[A-Z][a-z]{2}\s/.test(lines[i+2])) startDate = lines[i+2];
+      if(i+3 < lines.length && /^[A-Z][a-z]{2}\s/.test(lines[i+3])) endDate = lines[i+3];
+      
+      parsed[className] = { code, startDate, endDate };
+      
+      // Skip past "Show class details" if present
+      i += 4;
+      while(i < lines.length && (lines[i] === 'Show class details' || !lines[i])) i++;
+    } else {
+      i++;
+    }
+  }
+  
+  state.classKeys = { ...state.classKeys, ...parsed };
+  renderClassKeys();
+  updateAssignmentUI();
+  updateExportFilters();
+  toast(`${Object.keys(parsed).length} clases detectadas`, 'success');
+}
+
+function renderClassKeys() {
+  const keys = state.classKeys;
+  const count = Object.keys(keys).length;
+  if(!count) { document.getElementById('classKeysResult').style.display = 'none'; return; }
+  
+  document.getElementById('classKeysResult').style.display = 'block';
+  document.getElementById('classKeysCount').textContent = count;
+  
+  document.getElementById('classKeysGrid').innerHTML = Object.entries(keys).map(([name, info]) => `
+    <div class="key-card">
+      <div class="class-name">${name}</div>
+      <div class="class-code">${info.code}</div>
+      <div class="class-dates">${info.startDate} → ${info.endDate}</div>
+    </div>
+  `).join('');
+}
+
+function clearClassKeys() {
+  state.classKeys = {};
+  document.getElementById('classKeysInput').value = '';
+  document.getElementById('classKeysResult').style.display = 'none';
+  updateAssignmentUI();
+}
+
+// ===================== ASSIGNMENT UI =====================
+function getUniqueGroups() {
+  const groups = new Map();
+  state.students.forEach(s => {
+    const key = s.curso + '|' + s.grupo;
+    if(!groups.has(key)) {
+      groups.set(key, { curso: s.curso, grupo: s.grupo, count: 0, level: s.level });
+    }
+    groups.get(key).count++;
+  });
+  return [...groups.values()].sort((a,b) => {
+    // Sort: secondary 7-EBI to 9-EBI, then EMS
+    const order = {'7-EBI':1,'8-EBI':2,'9-EBI':3,'1-EMS':4,'2CSH-EMS':5,'2CT-EMS':5,'2CV-EMS':5,
+      '3CAD-EMS':6,'3CT-EMS':6,'3CVH-EMS':6,'3HCE-EMS':6,'3HCP-EMS':6};
+    const oa = order[a.curso] || 0;
+    const ob = order[b.curso] || 0;
+    if(oa !== ob) return oa - ob;
+    return a.grupo.localeCompare(b.grupo);
+  });
+}
+
+function formatGroupLabel(g) {
+  const labels = {
+    '7-EBI': '7mo', '8-EBI': '8vo', '9-EBI': '9no',
+    '1-EMS': '1° EMS', '2CSH-EMS': '2° CSH', '2CT-EMS': '2° CT', '2CV-EMS': '2° CV',
+    '3CAD-EMS': '3° CAD', '3CT-EMS': '3° CT', '3CVH-EMS': '3° CVH', '3HCE-EMS': '3° HCE', '3HCP-EMS': '3° HCP',
+  };
+  const base = labels[g.curso] || g.curso;
+  return g.grupo && g.grupo !== 'ÚNICO' ? `${base} ${g.grupo}` : base;
+}
+
+function updateAssignmentUI() {
+  const groups = getUniqueGroups();
+  const classNames = Object.keys(state.classKeys);
+  
+  if(!groups.length || !classNames.length) {
+    document.getElementById('assignmentUI').innerHTML = `
+      <div style="text-align:center; padding:40px; color:var(--text-dim);">
+        ${!groups.length ? '⚠️ Importá datos de estudiantes primero' : '⚠️ Cargá los códigos de clase primero'}
+      </div>`;
+    document.getElementById('assignmentSummary').innerHTML = '';
+    return;
+  }
+  
+  // Group by level/course
+  const byCategory = {};
+  groups.forEach(g => {
+    const cat = g.curso.includes('EMS') ? 'EMS' : (parseInt(g.curso) >= 7 ? 'Secundaria (EBI)' : 'Primaria (EBI)');
+    if(!byCategory[cat]) byCategory[cat] = [];
+    byCategory[cat].push(g);
+  });
+  
+  let html = '';
+  for(const [cat, grps] of Object.entries(byCategory)) {
+    html += `<h3 style="margin:16px 0 10px; font-size:14px; color:var(--accent);">${cat}</h3>`;
+    html += '<div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:10px;">';
+    grps.forEach(g => {
+      const key = g.curso + '|' + g.grupo;
+      const assigned = state.assignments[key] || '';
+      html += `
+        <div style="display:flex; align-items:center; gap:10px; background:var(--bg-input); padding:10px 14px; border-radius:var(--radius-sm); border:1px solid ${assigned ? 'var(--success)' : 'var(--border)'};">
+          <div style="flex:1;">
+            <div style="font-weight:600; font-size:13px;">${formatGroupLabel(g)}</div>
+            <div style="font-size:11px; color:var(--text-dim);">${g.count} estudiantes</div>
+          </div>
+          <select onchange="assignClass('${key}', this.value)" style="width:auto; min-width:140px;">
+            <option value="">— Sin asignar —</option>
+            ${classNames.map(c => `<option value="${c}" ${assigned===c?'selected':''}>${c}</option>`).join('')}
+          </select>
+        </div>`;
+    });
+    html += '</div>';
+  }
+  
+  document.getElementById('assignmentUI').innerHTML = html;
+  updateAssignmentSummary();
+}
+
+function assignClass(groupKey, className) {
+  if(className) {
+    state.assignments[groupKey] = className;
+  } else {
+    delete state.assignments[groupKey];
+  }
+  updateAssignmentSummary();
+  generateAccounts();
+}
+
+function updateAssignmentSummary() {
+  const assigned = Object.keys(state.assignments).length;
+  const total = getUniqueGroups().length;
+  const pct = total ? Math.round(assigned/total*100) : 0;
+  
+  // Count students assigned per class
+  const perClass = {};
+  Object.entries(state.assignments).forEach(([gk, cls]) => {
+    const [curso, grupo] = gk.split('|');
+    const count = state.students.filter(s => s.curso === curso && s.grupo === grupo).length;
+    perClass[cls] = (perClass[cls]||0) + count;
+  });
+  
+  let html = `
+    <div style="margin-bottom:12px;">
+      <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
+        <span>${assigned}/${total} grupos asignados</span><span>${pct}%</span>
+      </div>
+      <div class="progress-bar"><div class="fill" style="width:${pct}%"></div></div>
+    </div>`;
+  
+  if(Object.keys(perClass).length) {
+    html += '<div style="display:flex; flex-wrap:wrap; gap:8px;">';
+    Object.entries(perClass).forEach(([cls, cnt]) => {
+      html += `<div class="chip">${cls}: <strong>${cnt}</strong> alumnos</div>`;
+    });
+    html += '</div>';
+  }
+  
+  document.getElementById('assignmentSummary').innerHTML = html;
+}
+
+// ===================== ACCOUNT GENERATION =====================
+function normalizeStr(s) {
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+}
+
+function generateUsername(ap1, ap2, n1, existingUsernames) {
+  // Username: apellido + hca
+  let base = normalizeStr(ap1).replace(/[^a-z]/g, '');
+  if(!base) base = normalizeStr(ap2).replace(/[^a-z]/g, '') || 'alumno';
+  let username = base + 'hca';
+  
+  // Handle duplicates by appending first name initial or number
+  if(existingUsernames.has(username)) {
+    const initial = normalizeStr(n1).replace(/[^a-z]/g, '').charAt(0);
+    username = base + initial + 'hca';
+    if(existingUsernames.has(username)) {
+      let i = 2;
+      while(existingUsernames.has(base + initial + i + 'hca')) i++;
+      username = base + initial + i + 'hca';
+    }
+  }
+  return username;
+}
+
+function generatePassword(n1, ap1, grupo) {
+  // Secure password: First 2 chars of name (capitalized) + 2 chars of surname + 
+  // grupo digits + special char + 2 random digits
+  const name = normalizeStr(n1).replace(/[^a-z]/g, '');
+  const surname = normalizeStr(ap1).replace(/[^a-z]/g, '');
+  const specials = ['!','@','#','$','&','*'];
+  
+  const n = (name.charAt(0) || 'x').toUpperCase() + (name.charAt(1) || 'x');
+  const s = (surname.charAt(0) || 'x') + (surname.charAt(1) || 'x');
+  const g = String(grupo).replace(/[^0-9]/g, '') || '0';
+  const sp = specials[Math.floor(Math.random() * specials.length)];
+  const rnd = String(Math.floor(Math.random()*90)+10);
+  
+  return n + s + g + sp + rnd;
+}
+
+function generateAccounts() {
+  const accounts = [];
+  const usedUsernames = new Set();
+  
+  // Process each assignment
+  Object.entries(state.assignments).forEach(([gk, className]) => {
+    const [curso, grupo] = gk.split('|');
+    const classInfo = state.classKeys[className];
+    if(!classInfo) return;
+    
+    const students = state.students.filter(s => s.curso === curso && s.grupo === grupo)
+      .sort((a,b) => a.ap1.localeCompare(b.ap1) || a.n1.localeCompare(b.n1));
+    
+    students.forEach(s => {
+      const username = generateUsername(s.ap1, s.ap2, s.n1, usedUsernames);
+      usedUsernames.add(username);
+      const password = generatePassword(s.n1, s.ap1, grupo);
+      
+      accounts.push({
+        className,
+        classKey: classInfo.code,
+        firstName: s.n1 + (s.n2 ? ' ' + s.n2 : ''),
+        lastName: s.ap1 + (s.ap2 ? ' ' + s.ap2 : ''),
+        username,
+        password,
+        curso: s.curso,
+        grupo: s.grupo,
+        fullName: s.fullName
+      });
+    });
+  });
+  
+  // Apply any manual edits
+  state.accounts = accounts;
+  Object.entries(state.editedAccounts).forEach(([idx, edits]) => {
+    const i = parseInt(idx);
+    if(state.accounts[i]) {
+      Object.assign(state.accounts[i], edits);
+    }
+  });
+  
+  document.getElementById('accountsBadge').textContent = accounts.length;
+  updateAccountFilters();
+  renderAccounts();
+  updateExportFilters();
+}
+
+function updateAccountFilters() {
+  const classes = [...new Set(state.accounts.map(a => a.className))].sort();
+  document.getElementById('accountFilter').innerHTML = 
+    '<option value="all">Todas</option>' + classes.map(c => `<option value="${c}">${c}</option>`).join('');
+}
+
+function renderAccounts() {
+  let filtered = [...state.accounts];
+  const cls = document.getElementById('accountFilter').value;
+  const search = document.getElementById('accountSearch').value.toLowerCase();
+  if(cls !== 'all') filtered = filtered.filter(a => a.className === cls);
+  if(search) filtered = filtered.filter(a => 
+    a.firstName.toLowerCase().includes(search) ||
+    a.lastName.toLowerCase().includes(search) ||
+    a.username.toLowerCase().includes(search)
+  );
+  
+  const tbody = document.getElementById('accountsBody');
+  tbody.innerHTML = filtered.map((a, fi) => {
+    const realIdx = state.accounts.indexOf(a);
+    const edited = state.editedAccounts[realIdx] ? ' edited' : '';
+    return `
+    <tr class="${edited}">
+      <td><input type="checkbox" data-idx="${realIdx}"></td>
+      <td><span class="status status-ok" style="font-size:10px;">${a.className}</span></td>
+      <td><input type="text" value="${escapeHtml(a.firstName)}" onchange="editAccount(${realIdx},'firstName',this.value)"></td>
+      <td><input type="text" value="${escapeHtml(a.lastName)}" onchange="editAccount(${realIdx},'lastName',this.value)"></td>
+      <td><input type="text" value="${escapeHtml(a.username)}" onchange="editAccount(${realIdx},'username',this.value)" style="font-family:var(--mono); font-size:11px;"></td>
+      <td><input type="text" value="${escapeHtml(a.password)}" onchange="editAccount(${realIdx},'password',this.value)" style="font-family:var(--mono); font-size:11px;"></td>
+      <td style="font-family:var(--mono); font-size:11px; color:var(--accent);">${a.classKey}</td>
+      <td style="text-align:center; color:var(--success);">✓</td>
+    </tr>`;
+  }).join('');
+  
+  // Update stats
+  document.getElementById('accountStats').innerHTML = `
+    <div class="stat-card"><div class="number">${state.accounts.length}</div><div class="label-text">Cuentas Generadas</div></div>
+    <div class="stat-card"><div class="number">${new Set(state.accounts.map(a=>a.className)).size}</div><div class="label-text">Clases</div></div>
+    <div class="stat-card"><div class="number">${Object.keys(state.editedAccounts).length}</div><div class="label-text">Editadas</div></div>
+    <div class="stat-card"><div class="number">${filtered.length}</div><div class="label-text">Mostrando</div></div>
+  `;
+}
+
+function editAccount(idx, field, value) {
+  if(!state.editedAccounts[idx]) state.editedAccounts[idx] = {};
+  state.editedAccounts[idx][field] = value;
+  state.accounts[idx][field] = value;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function toggleSelectAll() {
+  const checked = document.getElementById('selectAll').checked;
+  document.querySelectorAll('#accountsBody input[type="checkbox"]').forEach(cb => cb.checked = checked);
+}
+
+function regenerateAllPasswords() {
+  state.accounts.forEach((a, i) => {
+    const newPw = generatePassword(a.firstName.split(' ')[0], a.lastName.split(' ')[0], a.grupo);
+    a.password = newPw;
+    if(state.editedAccounts[i]) state.editedAccounts[i].password = newPw;
+  });
+  renderAccounts();
+  toast('Contraseñas regeneradas', 'success');
+}
+
+// ===================== EXPORT =====================
+function updateExportFilters() {
+  const classes = [...new Set(state.accounts.map(a => a.className))].sort();
+  document.getElementById('exportClass').innerHTML = 
+    '<option value="all">Todas las clases</option>' + classes.map(c => `<option value="${c}">${c}</option>`).join('');
+  
+  document.getElementById('exportStats').innerHTML = `
+    <div class="stat-card"><div class="number">${state.accounts.length}</div><div class="label-text">Total Cuentas</div></div>
+    <div class="stat-card"><div class="number">${Object.keys(state.classKeys).length}</div><div class="label-text">Clases</div></div>
+    <div class="stat-card"><div class="number">${Object.keys(state.assignments).length}</div><div class="label-text">Grupos Asignados</div></div>
+  `;
+}
+
+function getCSVContent() {
+  const cls = document.getElementById('exportClass').value;
+  let accounts = cls === 'all' ? state.accounts : state.accounts.filter(a => a.className === cls);
+  
+  // BOM + header
+  let csv = '\uFEFF' + "Student's First name,Student's Last name,Username,Password,Class key\n";
+  accounts.forEach(a => {
+    csv += `${csvEscape(a.firstName)},${csvEscape(a.lastName)},${csvEscape(a.username)},${csvEscape(a.password)},${csvEscape(a.classKey)}\n`;
+  });
+  return csv;
+}
+
+function csvEscape(s) {
+  s = String(s);
+  if(s.includes(',') || s.includes('"') || s.includes('\n')) return '"' + s.replace(/"/g,'""') + '"';
+  return s;
+}
+
+function exportCSV() {
+  if(!state.accounts.length) { toast('No hay cuentas generadas', 'error'); return; }
+  const csv = getCSVContent();
+  const cls = document.getElementById('exportClass').value;
+  const fname = cls === 'all' ? 'HCA_child_accounts_all.csv' : `HCA_child_accounts_${cls.replace(/\s+/g,'_')}.csv`;
+  download(csv, fname, 'text/csv;charset=utf-8');
+  toast(`CSV exportado: ${fname}`, 'success');
+}
+
+function previewCSV() {
+  const csv = getCSVContent();
+  const pre = document.getElementById('csvPreview');
+  pre.textContent = csv;
+  pre.style.display = pre.style.display === 'none' ? 'block' : 'none';
+}
+
+function exportPrintable() {
+  if(!state.accounts.length) { toast('No hay cuentas generadas', 'error'); return; }
+  
+  const byClass = {};
+  state.accounts.forEach(a => {
+    if(!byClass[a.className]) byClass[a.className] = [];
+    byClass[a.className].push(a);
+  });
+  
+  let html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>HCA - Cuentas Cambridge</title>
+  <style>
+    body{font-family:Arial,sans-serif;font-size:11px;margin:20px;}
+    h2{color:#242B59;border-bottom:2px solid #242B59;padding-bottom:4px;margin-top:30px;page-break-before:always;}
+    h2:first-of-type{page-break-before:avoid;}
+    table{width:100%;border-collapse:collapse;margin-top:10px;}
+    th{background:#242B59;color:white;padding:6px 10px;text-align:left;font-size:10px;}
+    td{padding:5px 10px;border-bottom:1px solid #ddd;font-size:11px;}
+    tr:nth-child(even){background:#f5f5f5;}
+    .code{font-family:monospace;letter-spacing:0.5px;}
+    @media print{h2{page-break-before:always;}h2:first-of-type{page-break-before:avoid;}}
+  </style></head><body>
+  <h1 style="color:#242B59;">Colegio HCA — Cuentas Cambridge English</h1>
+  <p>Generado: ${new Date().toLocaleDateString('es-UY')}</p>`;
+  
+  Object.entries(byClass).sort().forEach(([cls, accs]) => {
+    const key = state.classKeys[cls];
+    html += `<h2>${cls} <span style="font-weight:normal;font-size:12px;color:#666;">— Código: ${key?.code || '?'}</span></h2>`;
+    html += `<table><tr><th>#</th><th>Nombre</th><th>Apellido</th><th>Usuario</th><th>Contraseña</th></tr>`;
+    accs.forEach((a, i) => {
+      html += `<tr><td>${i+1}</td><td>${a.firstName}</td><td>${a.lastName}</td><td class="code">${a.username}</td><td class="code">${a.password}</td></tr>`;
+    });
+    html += '</table>';
+  });
+  
+  html += '</body></html>';
+  download(html, 'HCA_cuentas_imprimible.html', 'text/html;charset=utf-8');
+  toast('Listado imprimible generado', 'success');
+}
+
+// ===================== SAVE/LOAD PROGRESS =====================
+function saveProgress() {
+  const data = JSON.stringify({
+    version: 1,
+    timestamp: new Date().toISOString(),
+    students: state.students,
+    classKeys: state.classKeys,
+    assignments: state.assignments,
+    accounts: state.accounts,
+    editedAccounts: state.editedAccounts
+  }, null, 2);
+  
+  const date = new Date().toISOString().slice(0,10);
+  download(data, `HCA_progreso_${date}.json`, 'application/json');
+  toast('Progreso guardado correctamente', 'success');
+}
+
+function loadProgress(file) {
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const data = JSON.parse(e.target.result);
+      if(data.students) state.students = data.students;
+      if(data.classKeys) state.classKeys = data.classKeys;
+      if(data.assignments) state.assignments = data.assignments;
+      if(data.accounts) state.accounts = data.accounts;
+      if(data.editedAccounts) state.editedAccounts = data.editedAccounts;
+      
+      // Update all UIs
+      updateImportStats();
+      updatePreviewFilters();
+      renderPreview();
+      renderClassKeys();
+      updateAssignmentUI();
+      document.getElementById('accountsBadge').textContent = state.accounts.length;
+      updateAccountFilters();
+      renderAccounts();
+      updateExportFilters();
+      
+      const dz = document.getElementById('dropProgress');
+      dz.innerHTML = `<span class="icon">✅</span><div class="label">${file.name}</div><div class="hint">Progreso restaurado — ${data.timestamp ? new Date(data.timestamp).toLocaleString('es-UY') : ''}</div>`;
+      dz.style.borderColor = 'var(--success)';
+      
+      // Pre-fill class keys textarea
+      if(data.classKeys && Object.keys(data.classKeys).length) {
+        document.getElementById('classKeysResult').style.display = 'block';
+      }
+      
+      toast(`Progreso cargado: ${state.students.length} estudiantes, ${state.accounts.length} cuentas`, 'success');
+    } catch(err) {
+      toast('Error leyendo el archivo de progreso: ' + err.message, 'error');
+    }
+  };
+  reader.readAsText(file);
+}
+
+// ===================== UTILS =====================
+function download(content, filename, type) {
+  const blob = new Blob([content], {type});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+}
+</script>
+</body>
+</html>
