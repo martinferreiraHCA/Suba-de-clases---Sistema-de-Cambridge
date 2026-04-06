@@ -7,72 +7,38 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --azul: #242B59;
-  --azul-mid: #2f3a7a;
-  --azul-light: #3a4a9e;
-  --accent: #f0c040;
-  --accent-dim: #c9a030;
-  --bg: #0b0d1a;
-  --bg-card: #131627;
-  --bg-card-hover: #181c32;
-  --bg-input: #0f1225;
-  --text: #dde1f0;
-  --text-dim: #7a80a0;
-  --text-muted: #4a5070;
-  --border: #232848;
-  --border-focus: #5060b0;
-  --success: #34d399;
-  --success-bg: #0a2e20;
-  --danger: #f87171;
-  --danger-bg: #2e0f0f;
-  --warning: #fbbf24;
-  --warning-bg: #2e2008;
-  --radius: 10px;
-  --radius-sm: 6px;
-  --radius-lg: 14px;
-  --font: 'DM Sans', system-ui, sans-serif;
-  --mono: 'Space Mono', monospace;
+  --azul:#242B59;--azul-mid:#2f3a7a;--azul-light:#3a4a9e;
+  --accent:#f0c040;--accent-dim:#c9a030;
+  --bg:#0b0d1a;--bg-card:#131627;--bg-card-hover:#181c32;--bg-input:#0f1225;
+  --text:#dde1f0;--text-dim:#7a80a0;--text-muted:#4a5070;
+  --border:#232848;--border-focus:#5060b0;
+  --success:#34d399;--success-bg:#0a2e20;
+  --danger:#f87171;--danger-bg:#2e0f0f;
+  --warning:#fbbf24;--warning-bg:#2e2008;
+  --purple:#a78bfa;--purple-bg:#1e1535;
+  --radius:10px;--radius-sm:6px;--radius-lg:14px;
+  --font:'DM Sans',system-ui,sans-serif;--mono:'Space Mono',monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5;}
 ::-webkit-scrollbar{width:5px;height:5px;}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
-::-webkit-scrollbar-thumb:hover{background:var(--azul-light);}
 
-.header{
-  background:linear-gradient(135deg,var(--azul) 0%,#18205a 100%);
-  border-bottom:2px solid var(--accent);
-  padding:18px 28px;
-  display:flex;align-items:center;gap:18px;
-  position:sticky;top:0;z-index:100;
-}
-.header-logo{
-  width:44px;height:44px;background:var(--accent);border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  font-weight:700;font-size:17px;color:var(--azul);flex-shrink:0;
-}
+.header{background:linear-gradient(135deg,var(--azul) 0%,#18205a 100%);border-bottom:2px solid var(--accent);padding:18px 28px;display:flex;align-items:center;gap:18px;position:sticky;top:0;z-index:100;}
+.header-logo{width:44px;height:44px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px;color:var(--azul);flex-shrink:0;}
 .header h1{font-size:18px;font-weight:600;letter-spacing:-0.02em;}
 .header p{font-size:12px;color:rgba(221,225,240,0.55);margin-top:1px;}
 
-.nav-tabs{
-  display:flex;gap:3px;background:var(--bg-card);
-  padding:5px;border-bottom:1px solid var(--border);overflow-x:auto;
-}
-.nav-tab{
-  padding:9px 18px;border-radius:var(--radius-sm);border:none;background:transparent;
-  color:var(--text-dim);font-family:var(--font);font-size:13px;font-weight:500;
-  cursor:pointer;white-space:nowrap;transition:all 0.18s;
-  display:flex;align-items:center;gap:7px;
-}
+.nav-tabs{display:flex;gap:3px;background:var(--bg-card);padding:5px;border-bottom:1px solid var(--border);overflow-x:auto;}
+.nav-tab{padding:9px 16px;border-radius:var(--radius-sm);border:none;background:transparent;color:var(--text-dim);font-family:var(--font);font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;transition:all 0.18s;display:flex;align-items:center;gap:7px;}
 .nav-tab:hover{background:var(--bg-card-hover);color:var(--text);}
 .nav-tab.active{background:var(--azul);color:var(--accent);font-weight:600;}
 .badge{background:var(--azul-light);color:white;font-size:10px;padding:2px 6px;border-radius:10px;font-weight:600;}
 .nav-tab.active .badge{background:var(--accent);color:var(--azul);}
 
 .main{max-width:1400px;margin:0 auto;padding:22px;}
-.panel{display:none;}
-.panel.active{display:block;}
+.panel{display:none;}.panel.active{display:block;}
 
 .card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;margin-bottom:18px;}
 .card-title{font-size:15px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:9px;}
@@ -88,24 +54,22 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .btn-danger:hover{background:var(--danger-bg);}
 .btn-success{border-color:var(--success);color:var(--success);}
 .btn-success:hover{background:var(--success-bg);}
+.btn-purple{border-color:var(--purple);color:var(--purple);}
+.btn-purple:hover{background:var(--purple-bg);}
 .btn-sm{padding:5px 11px;font-size:12px;}
 .btn-group{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
-.btn:disabled{opacity:0.4;cursor:not-allowed;}
 
-input[type="text"],input[type="number"],textarea,select{
-  background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);
-  color:var(--text);font-family:var(--font);font-size:13px;padding:9px 13px;width:100%;outline:none;transition:border-color 0.15s;
-}
+input[type="text"],input[type="number"],textarea,select{background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:var(--font);font-size:13px;padding:9px 13px;width:100%;outline:none;transition:border-color 0.15s;}
 input:focus,textarea:focus,select:focus{border-color:var(--border-focus);}
 textarea{resize:vertical;font-family:var(--mono);font-size:12px;}
 label{display:block;font-size:11px;font-weight:600;color:var(--text-dim);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.05em;}
 .form-group{margin-bottom:14px;}
 
-.drop-zone{border:2px dashed var(--border);border-radius:var(--radius-lg);padding:36px;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--bg-input);}
+.drop-zone{border:2px dashed var(--border);border-radius:var(--radius-lg);padding:32px;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--bg-input);}
 .drop-zone:hover,.drop-zone.dragover{border-color:var(--accent);background:rgba(240,192,64,0.04);}
-.drop-zone .icon{font-size:32px;margin-bottom:10px;display:block;}
+.drop-zone .icon{font-size:30px;margin-bottom:8px;display:block;}
 .drop-zone .label{font-weight:600;font-size:14px;}
-.drop-zone .hint{font-size:12px;color:var(--text-dim);margin-top:5px;}
+.drop-zone .hint{font-size:12px;color:var(--text-dim);margin-top:4px;}
 
 .table-container{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border);}
 table{width:100%;border-collapse:collapse;font-size:12px;}
@@ -119,14 +83,15 @@ td input:focus{border-color:var(--accent)!important;background:var(--bg-input)!i
 .status-ok{background:var(--success-bg);color:var(--success);}
 .status-warn{background:var(--warning-bg);color:var(--warning);}
 .status-err{background:var(--danger-bg);color:var(--danger);}
+.status-purple{background:var(--purple-bg);color:var(--purple);}
 
-.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:18px;}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:18px;}
 .stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;text-align:center;}
-.stat-card .number{font-size:26px;font-weight:700;color:var(--accent);font-family:var(--mono);}
+.stat-card .number{font-size:24px;font-weight:700;color:var(--accent);font-family:var(--mono);}
 .stat-card .label-text{font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;margin-top:3px;}
 
 .filter-bar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:14px;padding:10px;background:var(--bg-input);border-radius:var(--radius);}
-.filter-bar select,.filter-bar input{width:auto;min-width:150px;}
+.filter-bar select,.filter-bar input{width:auto;min-width:140px;}
 .filter-bar label{margin-bottom:0;}
 
 .toast-container{position:fixed;bottom:22px;right:22px;z-index:1000;display:flex;flex-direction:column;gap:7px;}
@@ -136,51 +101,31 @@ td input:focus{border-color:var(--accent)!important;background:var(--bg-input)!i
 .toast-info{background:var(--azul);color:var(--accent);border:1px solid var(--accent);}
 @keyframes slideIn{from{transform:translateX(110%);opacity:0;}to{transform:translateX(0);opacity:1;}}
 
-.keys-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:9px;margin-top:14px;}
-.key-card{background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);padding:11px;}
-.key-card .class-name{font-weight:600;font-size:13px;margin-bottom:3px;}
-.key-card .class-code{font-family:var(--mono);font-size:13px;color:var(--accent);background:rgba(240,192,64,0.08);padding:3px 7px;border-radius:4px;display:inline-block;}
-.key-card .class-dates{font-size:11px;color:var(--text-dim);margin-top:3px;}
+.keys-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-top:12px;}
+.key-card{background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px;}
+.key-card .class-name{font-weight:600;font-size:12px;margin-bottom:3px;}
+.key-card .class-code{font-family:var(--mono);font-size:12px;color:var(--accent);background:rgba(240,192,64,0.08);padding:3px 7px;border-radius:4px;display:inline-block;}
 
 .progress-bar{height:5px;background:var(--bg-input);border-radius:3px;overflow:hidden;margin:7px 0;}
 .progress-bar .fill{height:100%;background:var(--accent);border-radius:3px;transition:width 0.3s;}
 
 tr.edited td{background:rgba(240,192,64,0.03);}
 tr.edited td:first-child{box-shadow:inset 3px 0 0 var(--accent);}
-
 input[type="checkbox"]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
-.hidden{display:none!important;}
 .chip{display:inline-flex;align-items:center;gap:5px;background:var(--azul);border:1px solid var(--border);padding:3px 9px;border-radius:20px;font-size:11px;margin:2px;}
 
-/* Tabs inside card */
 .inner-tabs{display:flex;gap:2px;border-bottom:1px solid var(--border);margin-bottom:16px;}
 .inner-tab{padding:8px 16px;border:none;background:transparent;color:var(--text-dim);font-family:var(--font);font-size:13px;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s;margin-bottom:-1px;}
 .inner-tab:hover{color:var(--text);}
 .inner-tab.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:600;}
-.inner-panel{display:none;}
-.inner-panel.active{display:block;}
+.inner-panel{display:none;}.inner-panel.active{display:block;}
 
-/* Config grid */
 .config-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 @media(max-width:700px){.config-grid{grid-template-columns:1fr;}}
 
-/* Manual class entry */
-.manual-entry-row{display:flex;gap:8px;align-items:flex-end;margin-bottom:8px;}
-.manual-entry-row .form-group{margin-bottom:0;flex:1;}
 .class-list-item{display:flex;align-items:center;gap:10px;background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);padding:9px 12px;margin-bottom:7px;}
-.class-list-item .cls-name{font-weight:600;font-size:13px;flex:1;}
-.class-list-item .cls-code{font-family:var(--mono);font-size:12px;color:var(--accent);}
-.class-list-item .cls-dates{font-size:11px;color:var(--text-dim);}
-.class-list-item .remove-btn{background:none;border:none;color:var(--danger);cursor:pointer;font-size:16px;padding:0 4px;}
+.remove-btn{background:none;border:none;color:var(--danger);cursor:pointer;font-size:16px;padding:0 4px;}
 
-/* Auto-assign modal/panel */
-.auto-assign-section{background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:14px;}
-.mapping-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:13px;}
-.mapping-row .group-label{min-width:160px;font-weight:500;}
-.mapping-row select{flex:1;}
-.mapping-row .arrow{color:var(--text-dim);}
-
-/* Password strength indicator */
 .pw-strength{height:3px;border-radius:2px;margin-top:4px;transition:all 0.3s;}
 .pw-s0{background:var(--border);width:0%;}
 .pw-s1{background:var(--danger);width:25%;}
@@ -188,15 +133,26 @@ input[type="checkbox"]{accent-color:var(--accent);width:15px;height:15px;cursor:
 .pw-s3{background:#84cc16;width:75%;}
 .pw-s4{background:var(--success);width:100%;}
 
-/* Split CSV badges */
 .split-badge{display:inline-flex;align-items:center;gap:6px;background:var(--azul);border:1px solid var(--azul-light);padding:5px 12px;border-radius:20px;font-size:12px;font-family:var(--mono);margin:3px;}
 
-@media(max-width:768px){
-  .header{padding:12px 14px;}
-  .main{padding:10px;}
-  .card{padding:14px;}
-  .stats-row{grid-template-columns:repeat(2,1fr);}
-}
+/* English groups specific styles */
+.eng-group-row{display:flex;align-items:center;gap:10px;background:var(--bg-input);padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);margin-bottom:6px;}
+.eng-group-tag{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap;}
+.tag-fce{background:rgba(52,211,153,0.12);color:var(--success);border:1px solid rgba(52,211,153,0.3);}
+.tag-cae{background:rgba(251,191,36,0.12);color:var(--warning);border:1px solid rgba(251,191,36,0.3);}
+.tag-cpe{background:rgba(167,139,250,0.12);color:var(--purple);border:1px solid rgba(167,139,250,0.3);}
+.tag-other{background:rgba(122,128,160,0.12);color:var(--text-dim);border:1px solid rgba(122,128,160,0.3);}
+.student-match{font-size:11px;padding:2px 8px;border-radius:20px;}
+.match-ok{background:var(--success-bg);color:var(--success);}
+.match-warn{background:var(--warning-bg);color:var(--warning);}
+.match-none{background:var(--danger-bg);color:var(--danger);}
+
+.crossref-table{width:100%;font-size:12px;border-collapse:collapse;}
+.crossref-table th{background:var(--azul);color:var(--accent);padding:8px 12px;text-align:left;font-size:11px;text-transform:uppercase;}
+.crossref-table td{padding:7px 12px;border-bottom:1px solid var(--border);}
+.crossref-table tr:hover td{background:var(--bg-card-hover);}
+
+@media(max-width:768px){.header{padding:12px 14px;}.main{padding:10px;}.card{padding:14px;}.stats-row{grid-template-columns:repeat(2,1fr);}}
 </style>
 </head>
 <body>
@@ -211,1220 +167,1350 @@ input[type="checkbox"]{accent-color:var(--accent);width:15px;height:15px;cursor:
 
 <div class="nav-tabs" id="navTabs">
   <button class="nav-tab active" data-tab="import">📥 Importar</button>
+  <button class="nav-tab" data-tab="enggroups">🇬🇧 Grupos Inglés <span class="badge" id="engBadge">0</span></button>
   <button class="nav-tab" data-tab="classkeys">🔑 Clases</button>
   <button class="nav-tab" data-tab="assign">🎯 Asignar</button>
-  <button class="nav-tab" data-tab="config">⚙️ Configuración</button>
+  <button class="nav-tab" data-tab="config">⚙️ Config</button>
   <button class="nav-tab" data-tab="accounts">👤 Cuentas <span class="badge" id="accountsBadge">0</span></button>
   <button class="nav-tab" data-tab="export">📤 Exportar</button>
 </div>
 
 <div class="main">
 
-  <!-- ===== PANEL IMPORT ===== -->
-  <div class="panel active" id="panel-import">
-    <div class="stats-row" id="importStats"></div>
-    <div class="card">
-      <div class="card-title"><span class="icon">📁</span> Cargar Listas de Estudiantes</div>
-      <p style="font-size:13px;color:var(--text-dim);margin-bottom:16px;">Cargá los archivos Excel exportados del SIGED. También podés retomar un trabajo guardado.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
-        <div class="drop-zone" id="dropPrimaria" onclick="document.getElementById('filePrimaria').click()">
-          <span class="icon">🏫</span><div class="label">Primaria</div><div class="hint">Datos_alumnos_primaria.xlsx</div>
-          <input type="file" id="filePrimaria" accept=".xlsx" style="display:none">
-        </div>
-        <div class="drop-zone" id="dropSecundaria" onclick="document.getElementById('fileSecundaria').click()">
-          <span class="icon">🎓</span><div class="label">Secundaria</div><div class="hint">Datos_alumnos_secundaria.xlsx</div>
-          <input type="file" id="fileSecundaria" accept=".xlsx" style="display:none">
-        </div>
+<!-- ===== IMPORT ===== -->
+<div class="panel active" id="panel-import">
+  <div class="stats-row" id="importStats"></div>
+  <div class="card">
+    <div class="card-title"><span class="icon">📁</span> Cargar Listas SIGED</div>
+    <p style="font-size:13px;color:var(--text-dim);margin-bottom:16px;">Cargá los Excel del SIGED. Para bachillerato, usá el panel <strong style="color:var(--accent);">🇬🇧 Grupos Inglés</strong> para cargar la planilla de niveles.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
+      <div class="drop-zone" id="dropPrimaria" onclick="document.getElementById('filePrimaria').click()">
+        <span class="icon">🏫</span><div class="label">Primaria</div><div class="hint">Datos_alumnos_primaria.xlsx</div>
+        <input type="file" id="filePrimaria" accept=".xlsx" style="display:none">
       </div>
-      <div class="drop-zone" id="dropProgress" onclick="document.getElementById('fileProgress').click()" style="border-color:var(--accent);max-width:420px;">
-        <span class="icon">💾</span><div class="label">Retomar trabajo guardado</div><div class="hint">Cargar archivo .json de progreso</div>
-        <input type="file" id="fileProgress" accept=".json" style="display:none">
+      <div class="drop-zone" id="dropSecundaria" onclick="document.getElementById('fileSecundaria').click()">
+        <span class="icon">🎓</span><div class="label">Secundaria / Bachillerato</div><div class="hint">Datos_alumnos_secundaria.xlsx</div>
+        <input type="file" id="fileSecundaria" accept=".xlsx" style="display:none">
       </div>
     </div>
-    <div class="card" id="previewCard" style="display:none">
-      <div class="card-title"><span class="icon">👀</span> Vista Previa</div>
-      <div class="filter-bar">
-        <label>Nivel:</label>
-        <select id="previewLevel" onchange="renderPreview()"><option value="all">Todos</option></select>
-        <label>Grupo:</label>
-        <select id="previewGroup" onchange="renderPreview()"><option value="all">Todos</option></select>
-        <span style="flex:1"></span>
-        <span id="previewCount" style="font-size:12px;color:var(--text-dim);"></span>
-      </div>
-      <div class="table-container" style="max-height:380px;overflow-y:auto;">
-        <table>
-          <thead><tr><th>Curso</th><th>Grupo</th><th>Nro</th><th>Nombre Completo</th><th>1° Apellido</th><th>2° Apellido</th><th>1° Nombre</th></tr></thead>
-          <tbody id="previewBody"></tbody>
-        </table>
-      </div>
+    <div class="drop-zone" id="dropProgress" onclick="document.getElementById('fileProgress').click()" style="border-color:var(--accent);max-width:420px;">
+      <span class="icon">💾</span><div class="label">Retomar trabajo guardado</div><div class="hint">Cargar .json de progreso</div>
+      <input type="file" id="fileProgress" accept=".json" style="display:none">
     </div>
   </div>
-
-  <!-- ===== PANEL CLASS KEYS ===== -->
-  <div class="panel" id="panel-classkeys">
-    <div class="card">
-      <div class="card-title"><span class="icon">🔑</span> Códigos de Clase Cambridge</div>
-      <div class="inner-tabs">
-        <button class="inner-tab active" data-itab="paste">📋 Pegar texto</button>
-        <button class="inner-tab" data-itab="manual">✏️ Ingreso manual</button>
-      </div>
-
-      <!-- Paste mode -->
-      <div class="inner-panel active" id="itab-paste">
-        <p style="font-size:13px;color:var(--text-dim);margin-bottom:14px;">Pegá el texto copiado de Cambridge. El sistema detecta nombre, código y fechas automáticamente.</p>
-        <div class="form-group">
-          <label>Texto de Cambridge</label>
-          <textarea id="classKeysInput" rows="11" placeholder="Pegá acá el texto de Cambridge...
-Ejemplo:
-FCE 3o EMS
-bnr9-DgnB Copy
-Mar 16, 2026
-Apr 30, 2027
-Show class details"></textarea>
-        </div>
-        <div class="btn-group">
-          <button class="btn btn-primary" onclick="parseClassKeys()">🔍 Interpretar Códigos</button>
-          <button class="btn" onclick="document.getElementById('classKeysInput').value=''">🗑️ Limpiar</button>
-        </div>
-      </div>
-
-      <!-- Manual mode -->
-      <div class="inner-panel" id="itab-manual">
-        <p style="font-size:13px;color:var(--text-dim);margin-bottom:14px;">Ingresá cada clase manualmente cotejando los datos de la plataforma Cambridge.</p>
-        <div style="display:grid;grid-template-columns:2fr 1.5fr 1fr 1fr auto;gap:8px;align-items:flex-end;margin-bottom:16px;">
-          <div class="form-group"><label>Nombre de la Clase</label><input type="text" id="manClassName" placeholder="FCE 3o EMS"></div>
-          <div class="form-group"><label>Código (Class Key)</label><input type="text" id="manClassCode" placeholder="bnr9-DgnB"></div>
-          <div class="form-group"><label>Inicio</label><input type="text" id="manClassStart" placeholder="Mar 16, 2026"></div>
-          <div class="form-group"><label>Fin</label><input type="text" id="manClassEnd" placeholder="Apr 30, 2027"></div>
-          <button class="btn btn-primary" onclick="addManualClass()" style="margin-bottom:14px;">➕ Agregar</button>
-        </div>
-        <div id="manualClassList"></div>
-      </div>
+  <div class="card" id="previewCard" style="display:none">
+    <div class="card-title"><span class="icon">👀</span> Vista Previa</div>
+    <div class="filter-bar">
+      <label>Nivel:</label><select id="previewLevel" onchange="renderPreview()"><option value="all">Todos</option></select>
+      <label>Grupo:</label><select id="previewGroup" onchange="renderPreview()"><option value="all">Todos</option></select>
+      <span style="flex:1"></span><span id="previewCount" style="font-size:12px;color:var(--text-dim);"></span>
     </div>
-
-    <div class="card" id="classKeysResult" style="display:none">
-      <div class="card-title"><span class="icon">📋</span> Clases Detectadas (<span id="classKeysCount">0</span>)</div>
-      <div class="btn-group" style="margin-bottom:12px;">
-        <button class="btn btn-sm btn-danger" onclick="clearAllClassKeys()">🗑️ Limpiar todo</button>
-      </div>
-      <div class="keys-grid" id="classKeysGrid"></div>
+    <div class="table-container" style="max-height:350px;overflow-y:auto;">
+      <table><thead><tr><th>Curso</th><th>Grupo</th><th>Nro</th><th>Nombre Completo</th><th>1° Apellido</th><th>2° Apellido</th><th>1° Nombre</th></tr></thead>
+      <tbody id="previewBody"></tbody></table>
     </div>
   </div>
-
-  <!-- ===== PANEL ASSIGN ===== -->
-  <div class="panel" id="panel-assign">
-    <div class="card">
-      <div class="card-title"><span class="icon">🤖</span> Asignación Automática</div>
-      <p style="font-size:13px;color:var(--text-dim);margin-bottom:14px;">El sistema intenta emparejar grupos con clases por similitud de nombre (ej: "FCE 3o EMS" → grupo 3° EMS). Revisá y ajustá antes de confirmar.</p>
-      <div class="btn-group" style="margin-bottom:14px;">
-        <button class="btn btn-accent" onclick="autoAssign()">✨ Asignar Automáticamente</button>
-        <button class="btn btn-danger btn-sm" onclick="clearAllAssignments()">🗑️ Borrar Asignaciones</button>
-      </div>
-      <div id="autoAssignPreview"></div>
-    </div>
-
-    <div class="card">
-      <div class="card-title"><span class="icon">🎯</span> Asignación Manual por Grupo</div>
-      <div id="assignmentUI"></div>
-    </div>
-
-    <div class="card">
-      <div class="card-title"><span class="icon">📊</span> Resumen</div>
-      <div id="assignmentSummary"></div>
-    </div>
-  </div>
-
-  <!-- ===== PANEL CONFIG ===== -->
-  <div class="panel" id="panel-config">
-    <div class="card">
-      <div class="card-title"><span class="icon">👤</span> Formato de Usuario (Username)</div>
-      <div class="config-grid">
-        <div>
-          <div class="form-group">
-            <label>Patrón de usuario</label>
-            <select id="cfgUsernamePattern" onchange="updateConfigPreview()">
-              <option value="ap1+hca">apellido1 + hca</option>
-              <option value="ini+ap1+hca">inicial + apellido1 + hca</option>
-              <option value="ap1+ap2+hca">apellido1 + apellido2 + hca</option>
-              <option value="ap1+ini2+hca">apellido1 + inicial2 + hca</option>
-              <option value="n1+ap1+hca">nombre1 + apellido1 + hca</option>
-              <option value="ini1+ap1+hca">inicial_nombre + apellido1 + hca</option>
-              <option value="custom">Personalizado...</option>
-            </select>
-          </div>
-          <div class="form-group" id="customUsernameGroup" style="display:none;">
-            <label>Plantilla personalizada</label>
-            <input type="text" id="cfgUsernameCustom" placeholder="{ini1}{ap1}hca" oninput="updateConfigPreview()">
-            <p style="font-size:11px;color:var(--text-dim);margin-top:5px;">Variables: {n1} {n2} {ap1} {ap2} {ini1} {ini2} {inia1} {inia2} {curso} {grupo}</p>
-          </div>
-        </div>
-        <div>
-          <div class="form-group">
-            <label>Sufijo fijo (después del patrón)</label>
-            <input type="text" id="cfgUsernameSuffix" value="hca" oninput="updateConfigPreview()">
-            <p style="font-size:11px;color:var(--text-dim);margin-top:4px;">Ej: hca, 2025, anderson</p>
-          </div>
-          <div class="form-group">
-            <label>Máximo de caracteres</label>
-            <input type="number" id="cfgUsernameMax" value="20" min="6" max="40" oninput="updateConfigPreview()">
-          </div>
-        </div>
-      </div>
-      <div style="background:var(--bg-input);border-radius:var(--radius-sm);padding:12px;border:1px solid var(--border);">
-        <div style="font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;">Vista previa (ejemplo ficticio)</div>
-        <div id="usernamePreview" style="font-family:var(--mono);font-size:14px;color:var(--accent);"></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title"><span class="icon">🔒</span> Formato de Contraseña</div>
-      <div class="config-grid">
-        <div>
-          <div class="form-group">
-            <label>Método de contraseña</label>
-            <select id="cfgPasswordMethod" onchange="updatePwConfigUI()">
-              <option value="generated">Generada automáticamente</option>
-              <option value="cedula">Cédula de identidad</option>
-              <option value="cedula+hca">Cédula + hca</option>
-              <option value="nombre+grupo">Nombre + grupo + número</option>
-              <option value="fixed">Contraseña fija para todos</option>
-              <option value="pattern">Patrón personalizado</option>
-            </select>
-          </div>
-
-          <!-- Generated options -->
-          <div id="pwGenOptions">
-            <div class="form-group">
-              <label>Incluir en contraseña</label>
-              <div style="display:flex;flex-direction:column;gap:6px;margin-top:6px;">
-                <label style="text-transform:none;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:400;letter-spacing:0;"><input type="checkbox" id="cfgPwUppercase" checked onchange="updateConfigPreview()"> Mayúsculas (A-Z)</label>
-                <label style="text-transform:none;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:400;letter-spacing:0;"><input type="checkbox" id="cfgPwNumbers" checked onchange="updateConfigPreview()"> Números (0-9)</label>
-                <label style="text-transform:none;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:400;letter-spacing:0;"><input type="checkbox" id="cfgPwSpecial" checked onchange="updateConfigPreview()"> Especiales (!@#$&*)</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Longitud mínima</label>
-              <input type="number" id="cfgPwLength" value="8" min="8" max="20" oninput="updateConfigPreview()">
-            </div>
-            <div class="form-group">
-              <label>Componentes del patrón</label>
-              <select id="cfgPwPattern" onchange="updateConfigPreview()">
-                <option value="ini+ap+grupo+special+rand">Ini.nombre + Ap + Grupo + Especial + 2 dígitos</option>
-                <option value="n1+ap1+rand+special">Nombre(3) + Apellido(3) + 3 dígitos + Especial</option>
-                <option value="ap1+n1+special+rand">Apellido(4) + Nombre(2) + Especial + 2 dígitos</option>
-                <option value="rand_full">Completamente aleatoria (segura)</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Cédula options -->
-          <div id="pwCedulaOptions" style="display:none;">
-            <div class="form-group">
-              <label>¿El SIGED tiene columna de cédula?</label>
-              <select id="cfgCedulaColumn">
-                <option value="">No (usar número de lista como fallback)</option>
-                <option value="cedula">Columna "Cédula"</option>
-                <option value="documento">Columna "Documento"</option>
-              </select>
-            </div>
-            <p style="font-size:12px;color:var(--warning);background:var(--warning-bg);padding:10px;border-radius:var(--radius-sm);margin-top:8px;">⚠️ Si no hay columna de cédula en el archivo, se usará el número de lista como contraseña temporal.</p>
-          </div>
-
-          <!-- Fixed password -->
-          <div id="pwFixedOptions" style="display:none;">
-            <div class="form-group">
-              <label>Contraseña fija</label>
-              <input type="text" id="cfgPwFixed" placeholder="Ej: HCA2025!" oninput="updateConfigPreview()">
-            </div>
-          </div>
-
-          <!-- Pattern -->
-          <div id="pwPatternOptions" style="display:none;">
-            <div class="form-group">
-              <label>Plantilla</label>
-              <input type="text" id="cfgPwCustomPattern" placeholder="{N1}{Ap1}{grupo}!{rnd2}" oninput="updateConfigPreview()">
-              <p style="font-size:11px;color:var(--text-dim);margin-top:5px;">{N1}=Nombre mayús, {n1}=nombre min, {Ap1}=Apellido, {ap1}=apellido, {grupo}=dígitos grupo, {rnd2}=2 dígitos random, {rnd4}=4 dígitos</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div style="background:var(--bg-input);border-radius:var(--radius-sm);padding:14px;border:1px solid var(--border);">
-            <div style="font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">Vista previa contraseña</div>
-            <div id="passwordPreview" style="font-family:var(--mono);font-size:18px;color:var(--accent);letter-spacing:2px;"></div>
-            <div id="pwStrengthBar" class="pw-strength pw-s0"></div>
-            <div id="pwStrengthLabel" style="font-size:11px;color:var(--text-dim);margin-top:4px;"></div>
-            <div style="margin-top:12px;">
-              <button class="btn btn-sm" onclick="updateConfigPreview()">🔄 Nueva muestra</button>
-            </div>
-          </div>
-
-          <div style="background:var(--bg-input);border-radius:var(--radius-sm);padding:14px;border:1px solid var(--border);margin-top:12px;">
-            <div style="font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;">Requisitos Cambridge</div>
-            <div id="pwRequirements" style="font-size:12px;display:flex;flex-direction:column;gap:4px;"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title"><span class="icon">📦</span> Partición de CSV</div>
-      <p style="font-size:13px;color:var(--text-dim);margin-bottom:14px;">Cambridge acepta hasta 200 cuentas por archivo. Configurá cómo partir el CSV al exportar.</p>
-      <div class="config-grid">
-        <div class="form-group">
-          <label>Máximo de cuentas por archivo</label>
-          <input type="number" id="cfgCsvChunkSize" value="200" min="10" max="200" oninput="updateSplitPreview()">
-        </div>
-        <div class="form-group">
-          <label>Criterio de partición</label>
-          <select id="cfgCsvSplitBy" onchange="updateSplitPreview()">
-            <option value="count">Por cantidad (máximo por archivo)</option>
-            <option value="class">Por clase Cambridge (un archivo por clase)</option>
-          </select>
-        </div>
-      </div>
-      <div id="splitPreview" style="margin-top:8px;"></div>
-    </div>
-
-    <div class="card" style="border-color:var(--accent);">
-      <div class="card-title"><span class="icon">✅</span> Aplicar Configuración</div>
-      <p style="font-size:13px;color:var(--text-dim);margin-bottom:14px;">Al aplicar, se regeneran todos los nombres de usuario y contraseñas según la configuración actual. Las ediciones manuales se perderán.</p>
-      <div class="btn-group">
-        <button class="btn btn-accent" onclick="applyConfigAndRegenerate()">✅ Aplicar y Regenerar Cuentas</button>
-        <button class="btn" onclick="updateConfigPreview()">🔄 Actualizar Vista Previa</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== PANEL ACCOUNTS ===== -->
-  <div class="panel" id="panel-accounts">
-    <div class="stats-row" id="accountStats"></div>
-    <div class="card">
-      <div class="card-title"><span class="icon">👤</span> Cuentas Generadas</div>
-      <div class="filter-bar">
-        <label>Clase:</label>
-        <select id="accountFilter" onchange="renderAccounts()"><option value="all">Todas</option></select>
-        <label>Buscar:</label>
-        <input type="text" id="accountSearch" placeholder="Nombre, usuario..." oninput="renderAccounts()" style="max-width:200px;">
-        <span style="flex:1"></span>
-        <button class="btn btn-sm" onclick="regenerateAllPasswords()">🔄 Regenerar Contraseñas</button>
-        <button class="btn btn-sm btn-danger" onclick="deleteSelected()">🗑️ Borrar Seleccionados</button>
-      </div>
-      <div class="table-container" style="max-height:580px;overflow-y:auto;">
-        <table>
-          <thead>
-            <tr>
-              <th style="width:36px"><input type="checkbox" id="selectAll" onchange="toggleSelectAll()"></th>
-              <th>Clase</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
-              <th>Password</th>
-              <th>Class Key</th>
-              <th>✓</th>
-            </tr>
-          </thead>
-          <tbody id="accountsBody"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== PANEL EXPORT ===== -->
-  <div class="panel" id="panel-export">
-    <div class="stats-row" id="exportStats"></div>
-
-    <div class="card">
-      <div class="card-title"><span class="icon">💾</span> Guardar Progreso</div>
-      <p style="font-size:13px;color:var(--text-dim);margin-bottom:11px;">Guardá todo el estado actual para retomar después.</p>
-      <button class="btn btn-primary" onclick="saveProgress()">💾 Descargar Progreso (.json)</button>
-    </div>
-
-    <div class="card">
-      <div class="card-title"><span class="icon">📄</span> Exportar CSV para Cambridge</div>
-      <p style="font-size:13px;color:var(--text-dim);margin-bottom:12px;">
-        Genera el CSV en formato requerido por Cambridge. Partición automática si superás 200 cuentas por archivo.
-      </p>
-      <div class="config-grid" style="margin-bottom:14px;">
-        <div class="form-group">
-          <label>Exportar clase</label>
-          <select id="exportClass" onchange="updateSplitPreview()"><option value="all">Todas las clases</option></select>
-        </div>
-        <div class="form-group">
-          <label>Partición</label>
-          <select id="exportSplitBy" onchange="updateSplitPreview()">
-            <option value="config">Usar config (desde panel Configuración)</option>
-            <option value="count">Por cantidad</option>
-            <option value="class">Por clase</option>
-          </select>
-        </div>
-      </div>
-
-      <div id="exportSplitPreview" style="margin-bottom:14px;"></div>
-
-      <div class="btn-group">
-        <button class="btn btn-accent" onclick="exportAllCSVFiles()">📥 Descargar CSV(s)</button>
-        <button class="btn" onclick="previewCSV()">👁️ Vista Previa</button>
-      </div>
-      <pre id="csvPreview" style="display:none;margin-top:14px;background:var(--bg-input);padding:14px;border-radius:var(--radius-sm);font-family:var(--mono);font-size:11px;overflow-x:auto;max-height:360px;overflow-y:auto;border:1px solid var(--border);"></pre>
-    </div>
-
-    <div class="card">
-      <div class="card-title"><span class="icon">🖨️</span> Listado Imprimible por Clase</div>
-      <p style="font-size:13px;color:var(--text-dim);margin-bottom:11px;">HTML imprimible con usuario y contraseña, organizado por clase, listo para entregar.</p>
-      <button class="btn btn-primary" onclick="exportPrintable()">🖨️ Generar Listado Imprimible</button>
-    </div>
-  </div>
-
 </div>
 
-<div class="toast-container" id="toastContainer"></div>
+<!-- ===== ENGLISH GROUPS ===== -->
+<div class="panel" id="panel-enggroups">
+  <div class="card" style="border-color:var(--purple);">
+    <div class="card-title"><span class="icon">🇬🇧</span> Grupos de Inglés — Bachillerato</div>
+    <p style="font-size:13px;color:var(--text-dim);margin-bottom:14px;">
+      Los alumnos de bachillerato están distribuidos en grupos de inglés por nivel (FCE/CAE/CPE) independientemente de su curso escolar. 
+      Cargá la planilla de grupos (formato HCA) para cruzar automáticamente con los datos del SIGED.
+    </p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
+      <div class="drop-zone" id="dropEngGroups" onclick="document.getElementById('fileEngGroups').click()" style="border-color:var(--purple);">
+        <span class="icon">📊</span><div class="label">Planilla de Grupos de Inglés</div>
+        <div class="hint">Grupos_inglés_bachillerato.xlsx (formato HCA)</div>
+        <input type="file" id="fileEngGroups" accept=".xlsx" style="display:none">
+      </div>
+      <div style="background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;">
+        <div style="font-size:12px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;">Formato esperado del Excel</div>
+        <div style="font-size:12px;color:var(--text-dim);line-height:1.8;">
+          • Hojas: <span style="color:var(--accent);">1ºEMS</span>, <span style="color:var(--accent);">2º y 3° EMS</span><br>
+          • Fila 1: nombre de clase por columna<br>
+          • Fila 2: nombre del profesor<br>
+          • Filas 3+: alumnos (Apellido Nombre o APELLIDO APELLIDO Nombre)<br>
+          • Compatible con el formato generado por HCA
+        </div>
+      </div>
+    </div>
+    <div class="stats-row" id="engStats"></div>
+  </div>
 
+  <div class="card" id="engCrossrefCard" style="display:none;">
+    <div class="card-title"><span class="icon">🔀</span> Cruce con SIGED</div>
+    <p style="font-size:13px;color:var(--text-dim);margin-bottom:14px;">
+      Los alumnos de inglés se cruzan con los datos del SIGED por similitud de nombre. Revisá los cruces y corregí manualmente los que no matchearon.
+    </p>
+    <div class="filter-bar">
+      <label>Clase inglés:</label>
+      <select id="engFilter" onchange="renderEngCrossref()"><option value="all">Todas</option></select>
+      <label>Estado:</label>
+      <select id="engStatusFilter" onchange="renderEngCrossref()">
+        <option value="all">Todos</option>
+        <option value="matched">✅ Encontrados</option>
+        <option value="unmatched">❌ Sin cruce</option>
+        <option value="manual">✏️ Manual</option>
+      </select>
+      <span style="flex:1"></span>
+      <button class="btn btn-sm btn-purple" onclick="rematchAll()">🔄 Re-cruzar todo</button>
+    </div>
+    <div class="table-container" style="max-height:500px;overflow-y:auto;">
+      <table class="crossref-table">
+        <thead><tr>
+          <th>Clase Inglés</th><th>Nivel</th><th>Nombre en planilla</th><th>Mejor cruce SIGED</th><th>Curso SIGED</th><th>Score</th><th>Acción</th>
+        </tr></thead>
+        <tbody id="engCrossrefBody"></tbody>
+      </table>
+    </div>
+    <div style="margin-top:14px;" class="btn-group">
+      <button class="btn btn-accent" onclick="applyEngGroups()">✅ Confirmar Cruces y Generar Cuentas de Bachillerato</button>
+      <span id="engCrossrefSummary" style="font-size:13px;color:var(--text-dim);"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CLASS KEYS ===== -->
+<div class="panel" id="panel-classkeys">
+  <div class="card">
+    <div class="card-title"><span class="icon">🔑</span> Códigos de Clase Cambridge</div>
+    <div class="inner-tabs">
+      <button class="inner-tab active" data-itab="paste">📋 Pegar texto</button>
+      <button class="inner-tab" data-itab="manual">✏️ Ingreso manual</button>
+    </div>
+    <div class="inner-panel active" id="itab-paste">
+      <p style="font-size:13px;color:var(--text-dim);margin-bottom:12px;">Pegá el texto copiado de Cambridge. Detecta nombre, código y fechas automáticamente.</p>
+      <div class="form-group"><label>Texto de Cambridge</label>
+        <textarea id="classKeysInput" rows="10" placeholder="FCE 3o EMS&#10;bnr9-DgnB Copy&#10;Mar 16, 2026&#10;Apr 30, 2027&#10;Show class details"></textarea>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="parseClassKeys()">🔍 Interpretar</button>
+        <button class="btn" onclick="document.getElementById('classKeysInput').value=''">🗑️ Limpiar</button>
+      </div>
+    </div>
+    <div class="inner-panel" id="itab-manual">
+      <p style="font-size:13px;color:var(--text-dim);margin-bottom:12px;">Ingresá cada clase cotejando la plataforma Cambridge.</p>
+      <div style="display:grid;grid-template-columns:2fr 1.5fr 1fr 1fr auto;gap:8px;align-items:flex-end;margin-bottom:14px;">
+        <div class="form-group"><label>Nombre de la Clase</label><input type="text" id="manClassName" placeholder="FCE 3° EMS"></div>
+        <div class="form-group"><label>Código (Class Key)</label><input type="text" id="manClassCode" placeholder="bnr9-DgnB"></div>
+        <div class="form-group"><label>Inicio</label><input type="text" id="manClassStart" placeholder="Mar 16, 2026"></div>
+        <div class="form-group"><label>Fin</label><input type="text" id="manClassEnd" placeholder="Apr 30, 2027"></div>
+        <button class="btn btn-primary" onclick="addManualClass()" style="margin-bottom:14px;">➕</button>
+      </div>
+      <div id="manualClassList"></div>
+    </div>
+  </div>
+  <div class="card" id="classKeysResult" style="display:none">
+    <div class="card-title"><span class="icon">📋</span> Clases (<span id="classKeysCount">0</span>)</div>
+    <div class="btn-group" style="margin-bottom:10px;">
+      <button class="btn btn-sm btn-danger" onclick="clearAllClassKeys()">🗑️ Limpiar todo</button>
+    </div>
+    <div class="keys-grid" id="classKeysGrid"></div>
+  </div>
+</div>
+
+<!-- ===== ASSIGN ===== -->
+<div class="panel" id="panel-assign">
+  <div class="card" style="border-color:var(--purple);background:linear-gradient(135deg,var(--bg-card) 0%,#1a1030 100%);">
+    <div class="card-title"><span class="icon">🇬🇧</span> Bachillerato — Asignación por Nivel de Inglés</div>
+    <p style="font-size:13px;color:var(--text-dim);margin-bottom:14px;">
+      Los grupos de inglés de bachillerato se asignan de forma individual (cada alumno tiene su nivel FCE/CAE/CPE). 
+      Asignale un código de clase Cambridge a cada grupo de inglés.
+    </p>
+    <div id="engAssignUI"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🤖</span> Asignación Automática — Ciclo Básico y Primaria</div>
+    <p style="font-size:13px;color:var(--text-dim);margin-bottom:12px;">Empareja grupos escolares (no EMS) con clases Cambridge por similitud de nombre.</p>
+    <div class="btn-group" style="margin-bottom:12px;">
+      <button class="btn btn-accent" onclick="autoAssign()">✨ Asignar Automáticamente</button>
+      <button class="btn btn-danger btn-sm" onclick="clearAllAssignments()">🗑️ Borrar Asignaciones</button>
+    </div>
+    <div id="autoAssignPreview"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🎯</span> Asignación Manual — Ciclo Básico y Primaria</div>
+    <div id="assignmentUI"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">📊</span> Resumen</div>
+    <div id="assignmentSummary"></div>
+  </div>
+</div>
+
+<!-- ===== CONFIG ===== -->
+<div class="panel" id="panel-config">
+  <div class="card">
+    <div class="card-title"><span class="icon">👤</span> Formato de Usuario</div>
+    <div class="config-grid">
+      <div>
+        <div class="form-group"><label>Patrón</label>
+          <select id="cfgUsernamePattern" onchange="updateConfigPreview()">
+            <option value="ap1+hca">apellido1 + hca</option>
+            <option value="ini+ap1+hca">inicial + apellido1 + hca</option>
+            <option value="ap1+ap2+hca">apellido1 + apellido2 + hca</option>
+            <option value="n1+ap1+hca">nombre1 + apellido1 + hca</option>
+            <option value="ini1+ap1+hca">ini_nombre + apellido1 + hca</option>
+            <option value="custom">Personalizado...</option>
+          </select>
+        </div>
+        <div class="form-group" id="customUsernameGroup" style="display:none;">
+          <label>Plantilla</label>
+          <input type="text" id="cfgUsernameCustom" placeholder="{ini1}{ap1}hca" oninput="updateConfigPreview()">
+          <p style="font-size:11px;color:var(--text-dim);margin-top:4px;">{n1} {n2} {ap1} {ap2} {ini1} {ini2} {inia1} {inia2}</p>
+        </div>
+      </div>
+      <div>
+        <div class="form-group"><label>Sufijo fijo</label><input type="text" id="cfgUsernameSuffix" value="hca" oninput="updateConfigPreview()"></div>
+        <div class="form-group"><label>Máximo caracteres</label><input type="number" id="cfgUsernameMax" value="20" min="6" max="40" oninput="updateConfigPreview()"></div>
+      </div>
+    </div>
+    <div style="background:var(--bg-input);border-radius:var(--radius-sm);padding:12px;border:1px solid var(--border);">
+      <div style="font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:5px;">Vista previa</div>
+      <div id="usernamePreview" style="font-family:var(--mono);font-size:14px;color:var(--accent);"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🔒</span> Formato de Contraseña</div>
+    <div class="config-grid">
+      <div>
+        <div class="form-group"><label>Método</label>
+          <select id="cfgPasswordMethod" onchange="updatePwConfigUI()">
+            <option value="generated">Generada automáticamente</option>
+            <option value="cedula">Cédula de identidad</option>
+            <option value="cedula+hca">Cédula + hca</option>
+            <option value="nombre+grupo">Nombre + grupo + número</option>
+            <option value="fixed">Contraseña fija para todos</option>
+            <option value="pattern">Patrón personalizado</option>
+          </select>
+        </div>
+        <div id="pwGenOptions">
+          <div class="form-group"><label>Patrón</label>
+            <select id="cfgPwPattern" onchange="updateConfigPreview()">
+              <option value="ini+ap+grupo+special+rand">Ini.nombre + Ap + Grupo + Especial + 2 dígitos</option>
+              <option value="n1+ap1+rand+special">Nombre(3) + Apellido(3) + 3 dígitos + Especial</option>
+              <option value="ap1+n1+special+rand">Apellido(4) + Nombre(2) + Especial + 2 dígitos</option>
+              <option value="rand_full">Completamente aleatoria</option>
+            </select>
+          </div>
+        </div>
+        <div id="pwFixedOptions" style="display:none;"><div class="form-group"><label>Contraseña fija</label><input type="text" id="cfgPwFixed" placeholder="HCA2025!" oninput="updateConfigPreview()"></div></div>
+        <div id="pwPatternOptions" style="display:none;">
+          <div class="form-group"><label>Plantilla</label>
+            <input type="text" id="cfgPwCustomPattern" placeholder="{N1}{Ap1}{grupo}!{rnd2}" oninput="updateConfigPreview()">
+            <p style="font-size:11px;color:var(--text-dim);margin-top:4px;">{N1} {n1} {Ap1} {ap1} {grupo} {rnd2} {rnd4}</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--bg-input);border-radius:var(--radius-sm);padding:14px;border:1px solid var(--border);">
+          <div style="font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:7px;">Vista previa contraseña</div>
+          <div id="passwordPreview" style="font-family:var(--mono);font-size:18px;color:var(--accent);letter-spacing:2px;"></div>
+          <div id="pwStrengthBar" class="pw-strength pw-s0"></div>
+          <div id="pwStrengthLabel" style="font-size:11px;color:var(--text-dim);margin-top:3px;"></div>
+          <div style="margin-top:10px;"><button class="btn btn-sm" onclick="updateConfigPreview()">🔄 Nueva muestra</button></div>
+        </div>
+        <div style="background:var(--bg-input);border-radius:var(--radius-sm);padding:12px;border:1px solid var(--border);margin-top:10px;">
+          <div style="font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:5px;">Requisitos Cambridge</div>
+          <div id="pwRequirements" style="font-size:12px;display:flex;flex-direction:column;gap:3px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">📦</span> Partición de CSV</div>
+    <div class="config-grid">
+      <div class="form-group"><label>Máximo cuentas por archivo</label><input type="number" id="cfgCsvChunkSize" value="200" min="10" max="200" oninput="updateSplitPreview()"></div>
+      <div class="form-group"><label>Criterio de partición</label>
+        <select id="cfgCsvSplitBy" onchange="updateSplitPreview()">
+          <option value="count">Por cantidad</option>
+          <option value="class">Por clase Cambridge</option>
+        </select>
+      </div>
+    </div>
+    <div id="splitPreview"></div>
+  </div>
+
+  <div class="card" style="border-color:var(--accent);">
+    <div class="card-title"><span class="icon">✅</span> Aplicar Configuración</div>
+    <p style="font-size:13px;color:var(--text-dim);margin-bottom:12px;">Regenera todos los usuarios y contraseñas según la configuración actual.</p>
+    <div class="btn-group">
+      <button class="btn btn-accent" onclick="applyConfigAndRegenerate()">✅ Aplicar y Regenerar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ACCOUNTS ===== -->
+<div class="panel" id="panel-accounts">
+  <div class="stats-row" id="accountStats"></div>
+  <div class="card">
+    <div class="card-title"><span class="icon">👤</span> Cuentas Generadas</div>
+    <div class="filter-bar">
+      <label>Clase:</label><select id="accountFilter" onchange="renderAccounts()"><option value="all">Todas</option></select>
+      <label>Origen:</label>
+      <select id="accountSourceFilter" onchange="renderAccounts()">
+        <option value="all">Todos</option>
+        <option value="siged">📋 SIGED (grupo)</option>
+        <option value="english">🇬🇧 Grupos Inglés</option>
+      </select>
+      <label>Buscar:</label>
+      <input type="text" id="accountSearch" placeholder="Nombre, usuario..." oninput="renderAccounts()" style="max-width:200px;">
+      <span style="flex:1"></span>
+      <button class="btn btn-sm" onclick="regenerateAllPasswords()">🔄 Regenerar Contraseñas</button>
+      <button class="btn btn-sm btn-danger" onclick="deleteSelected()">🗑️ Borrar Sel.</button>
+    </div>
+    <div class="table-container" style="max-height:580px;overflow-y:auto;">
+      <table>
+        <thead><tr>
+          <th style="width:36px"><input type="checkbox" id="selectAll" onchange="toggleSelectAll()"></th>
+          <th>Clase</th><th>Nivel</th><th>First Name</th><th>Last Name</th>
+          <th>Username</th><th>Password</th><th>Class Key</th><th>Origen</th>
+        </tr></thead>
+        <tbody id="accountsBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== EXPORT ===== -->
+<div class="panel" id="panel-export">
+  <div class="stats-row" id="exportStats"></div>
+  <div class="card">
+    <div class="card-title"><span class="icon">💾</span> Guardar Progreso</div>
+    <p style="font-size:13px;color:var(--text-dim);margin-bottom:11px;">Guarda todo: datos SIGED, grupos de inglés, asignaciones, cuentas editadas y configuración.</p>
+    <button class="btn btn-primary" onclick="saveProgress()">💾 Descargar .json</button>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="icon">📄</span> Exportar CSV para Cambridge</div>
+    <div class="config-grid" style="margin-bottom:12px;">
+      <div class="form-group"><label>Exportar clase</label><select id="exportClass" onchange="updateExportSplitPreview()"><option value="all">Todas</option></select></div>
+      <div class="form-group"><label>Partición</label>
+        <select id="exportSplitBy" onchange="updateExportSplitPreview()">
+          <option value="config">Usar configuración</option>
+          <option value="count">Por cantidad</option>
+          <option value="class">Por clase</option>
+        </select>
+      </div>
+    </div>
+    <div id="exportSplitPreview" style="margin-bottom:12px;"></div>
+    <div class="btn-group">
+      <button class="btn btn-accent" onclick="exportAllCSVFiles()">📥 Descargar CSV(s)</button>
+      <button class="btn" onclick="previewCSV()">👁️ Vista Previa</button>
+    </div>
+    <pre id="csvPreview" style="display:none;margin-top:14px;background:var(--bg-input);padding:14px;border-radius:var(--radius-sm);font-family:var(--mono);font-size:11px;overflow-x:auto;max-height:360px;overflow-y:auto;border:1px solid var(--border);"></pre>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="icon">🖨️</span> Listado Imprimible</div>
+    <p style="font-size:13px;color:var(--text-dim);margin-bottom:11px;">HTML imprimible con usuario y contraseña por clase.</p>
+    <button class="btn btn-primary" onclick="exportPrintable()">🖨️ Generar HTML Imprimible</button>
+  </div>
+</div>
+
+</div>
+<div class="toast-container" id="toastContainer"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
 // ===================== STATE =====================
 let state = {
-  students: [],
-  classKeys: {},
-  assignments: {},
-  accounts: [],
-  editedAccounts: {},
+  students: [],          // SIGED students
+  classKeys: {},         // { className: { code, startDate, endDate } }
+  assignments: {},       // { "curso|grupo": "className" } for non-EMS
+  accounts: [],          // All generated accounts
+  editedAccounts: {},    // { index: { field: value } }
+  engStudents: [],       // Parsed from english groups xlsx
+  engCrossref: [],       // Crossref results: { engStudent, sigedStudent, score, manual }
+  engAssignments: {},    // { englishGroupName: "cambridgeClassName" }
 };
 
-// ===================== CONFIG =====================
 let cfg = {
-  usernamePattern: 'ap1+hca',
-  usernameCustom: '{ini1}{ap1}hca',
-  usernameSuffix: 'hca',
-  usernameMax: 20,
-  passwordMethod: 'generated',
-  pwUppercase: true,
-  pwNumbers: true,
-  pwSpecial: true,
-  pwLength: 8,
-  pwPattern: 'ini+ap+grupo+special+rand',
-  pwCustomPattern: '{N1}{Ap1}{grupo}!{rnd2}',
-  pwFixed: '',
-  cedulaColumn: '',
-  csvChunkSize: 200,
-  csvSplitBy: 'count',
+  usernamePattern:'ap1+hca', usernameCustom:'{ini1}{ap1}hca',
+  usernameSuffix:'hca', usernameMax:20,
+  passwordMethod:'generated', pwPattern:'ini+ap+grupo+special+rand',
+  pwFixed:'', pwCustomPattern:'{N1}{Ap1}{grupo}!{rnd2}',
+  csvChunkSize:200, csvSplitBy:'count',
 };
 
 // ===================== NAVIGATION =====================
 document.querySelectorAll('.nav-tab').forEach(tab => {
   tab.addEventListener('click', () => {
-    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
     tab.classList.add('active');
-    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
-    if(tab.dataset.tab === 'config') updateConfigPreview();
-    if(tab.dataset.tab === 'export') { updateExportFilters(); updateSplitPreview(); }
+    document.getElementById('panel-'+tab.dataset.tab).classList.add('active');
+    if(tab.dataset.tab==='config') updateConfigPreview();
+    if(tab.dataset.tab==='export'){updateExportFilters();updateExportSplitPreview();}
+    if(tab.dataset.tab==='assign') updateEngAssignUI();
   });
 });
-
-// Inner tabs
 document.querySelectorAll('.inner-tab').forEach(tab => {
   tab.addEventListener('click', () => {
-    const parent = tab.closest('.card');
-    parent.querySelectorAll('.inner-tab').forEach(t => t.classList.remove('active'));
-    parent.querySelectorAll('.inner-panel').forEach(p => p.classList.remove('active'));
+    const parent=tab.closest('.card');
+    parent.querySelectorAll('.inner-tab').forEach(t=>t.classList.remove('active'));
+    parent.querySelectorAll('.inner-panel').forEach(p=>p.classList.remove('active'));
     tab.classList.add('active');
-    document.getElementById('itab-' + tab.dataset.itab).classList.add('active');
+    document.getElementById('itab-'+tab.dataset.itab).classList.add('active');
   });
 });
 
 // ===================== TOAST =====================
 function toast(msg, type='info') {
-  const t = document.createElement('div');
-  t.className = 'toast toast-' + type;
-  t.textContent = msg;
+  const t=document.createElement('div'); t.className='toast toast-'+type; t.textContent=msg;
   document.getElementById('toastContainer').appendChild(t);
-  setTimeout(() => t.remove(), 4000);
+  setTimeout(()=>t.remove(),4000);
 }
 
-// ===================== FILE IMPORT =====================
-function setupDropZone(dropId, inputId, handler) {
-  const dz = document.getElementById(dropId);
-  const inp = document.getElementById(inputId);
-  ['dragenter','dragover'].forEach(e => dz.addEventListener(e, ev => { ev.preventDefault(); dz.classList.add('dragover'); }));
-  ['dragleave','drop'].forEach(e => dz.addEventListener(e, ev => { ev.preventDefault(); dz.classList.remove('dragover'); }));
-  dz.addEventListener('drop', ev => { if(ev.dataTransfer.files.length) handler(ev.dataTransfer.files[0]); });
-  inp.addEventListener('change', ev => { if(ev.target.files.length) handler(ev.target.files[0]); });
+// ===================== UTILS =====================
+function normalizeStr(s){return String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();}
+function escapeHtml(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function download(content,filename,type){
+  const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download=filename;document.body.appendChild(a);a.click();
+  setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url);},100);
 }
-setupDropZone('dropPrimaria', 'filePrimaria', f => importExcel(f, 'primaria'));
-setupDropZone('dropSecundaria', 'fileSecundaria', f => importExcel(f, 'secundaria'));
-setupDropZone('dropProgress', 'fileProgress', loadProgress);
 
+// ===================== SETUP DROPZONES =====================
+function setupDropZone(dropId,inputId,handler){
+  const dz=document.getElementById(dropId),inp=document.getElementById(inputId);
+  ['dragenter','dragover'].forEach(e=>dz.addEventListener(e,ev=>{ev.preventDefault();dz.classList.add('dragover');}));
+  ['dragleave','drop'].forEach(e=>dz.addEventListener(e,ev=>{ev.preventDefault();dz.classList.remove('dragover');}));
+  dz.addEventListener('drop',ev=>{if(ev.dataTransfer.files.length)handler(ev.dataTransfer.files[0]);});
+  inp.addEventListener('change',ev=>{if(ev.target.files.length)handler(ev.target.files[0]);});
+}
+setupDropZone('dropPrimaria','filePrimaria',f=>importExcel(f,'primaria'));
+setupDropZone('dropSecundaria','fileSecundaria',f=>importExcel(f,'secundaria'));
+setupDropZone('dropProgress','fileProgress',loadProgress);
+setupDropZone('dropEngGroups','fileEngGroups',importEngGroups);
+
+// ===================== IMPORT SIGED =====================
 function importExcel(file, level) {
-  const reader = new FileReader();
-  reader.onload = function(e) {
+  const reader=new FileReader();
+  reader.onload=function(e){
     try {
-      const wb = XLSX.read(e.target.result, {type:'array'});
-      const ws = wb.Sheets[wb.SheetNames[0]];
-      const data = XLSX.utils.sheet_to_json(ws, {header:1, defval:''});
-      let headerIdx = -1;
-      for(let i=0;i<Math.min(10,data.length);i++) {
-        if(data[i] && data[i].some(c => String(c).trim() === 'Curso')) { headerIdx = i; break; }
+      const wb=XLSX.read(e.target.result,{type:'array'});
+      const ws=wb.Sheets[wb.SheetNames[0]];
+      const data=XLSX.utils.sheet_to_json(ws,{header:1,defval:''});
+      let headerIdx=-1;
+      for(let i=0;i<Math.min(10,data.length);i++){
+        if(data[i]&&data[i].some(c=>String(c).trim()==='Curso')){headerIdx=i;break;}
       }
-      if(headerIdx === -1) { toast('No se encontró el encabezado "Curso"', 'error'); return; }
-      const headers = data[headerIdx].map(h => String(h).trim());
-      const idx = (n) => headers.indexOf(n);
-      const cursoIdx = idx('Curso'), grupoIdx = idx('Grupo');
-      const ap1Idx = idx('Primer Apellido'), ap2Idx = idx('Segundo Apellido');
-      const n1Idx = idx('Primer Nombre'), n2Idx = idx('Segundo Nombre');
-      const nroIdx = idx('Nro. Lista');
-      const fullNameIdx = 9;
-
-      state.students = state.students.filter(s => s.level !== level);
-      let count = 0;
-      for(let i=headerIdx+1;i<data.length;i++) {
-        const row = data[i];
-        if(!row || !row[cursoIdx]) continue;
-        const curso = String(row[cursoIdx]).trim();
-        if(!curso) continue;
-        const grupo = String(row[grupoIdx]||'').trim();
-        const fullName = String(row[fullNameIdx]||'').trim();
-        const ap1 = String(row[ap1Idx]||'').trim();
-        const ap2 = String(row[ap2Idx]||'').trim();
-        const n1 = String(row[n1Idx]||'').trim();
-        const n2 = String(row[n2Idx]||'').trim();
-        if(!fullName && !ap1) continue;
-        state.students.push({ level, curso, grupo, fullName, ap1, ap2, n1, n2, nro: String(row[nroIdx]||'').trim() });
+      if(headerIdx===-1){toast('No se encontró columna "Curso"','error');return;}
+      const headers=data[headerIdx].map(h=>String(h).trim());
+      const ix=n=>headers.indexOf(n);
+      const cursoIdx=ix('Curso'),grupoIdx=ix('Grupo'),ap1Idx=ix('Primer Apellido'),ap2Idx=ix('Segundo Apellido'),n1Idx=ix('Primer Nombre'),n2Idx=ix('Segundo Nombre'),nroIdx=ix('Nro. Lista');
+      state.students=state.students.filter(s=>s.level!==level);
+      let count=0;
+      for(let i=headerIdx+1;i<data.length;i++){
+        const row=data[i];
+        if(!row||!row[cursoIdx])continue;
+        const curso=String(row[cursoIdx]).trim();
+        if(!curso)continue;
+        const grupo=String(row[grupoIdx]||'').trim();
+        const fullName=String(row[9]||'').trim();
+        const ap1=String(row[ap1Idx]||'').trim();
+        const ap2=String(row[ap2Idx]||'').trim();
+        const n1=String(row[n1Idx]||'').trim();
+        const n2=String(row[n2Idx]||'').trim();
+        if(!fullName&&!ap1)continue;
+        state.students.push({level,curso,grupo,fullName,ap1,ap2,n1,n2,nro:String(row[nroIdx]||'').trim()});
         count++;
       }
-      const dz = document.getElementById(level === 'primaria' ? 'dropPrimaria' : 'dropSecundaria');
-      dz.innerHTML = `<span class="icon">✅</span><div class="label">${file.name}</div><div class="hint">${count} estudiantes importados</div>`;
-      dz.style.borderColor = 'var(--success)';
-      toast(`${count} estudiantes de ${level}`, 'success');
-      updateImportStats(); updatePreviewFilters(); renderPreview(); updateAssignmentUI(); updateSplitPreview();
-    } catch(err) { toast('Error: ' + err.message, 'error'); console.error(err); }
+      const dz=document.getElementById(level==='primaria'?'dropPrimaria':'dropSecundaria');
+      dz.innerHTML=`<span class="icon">✅</span><div class="label">${file.name}</div><div class="hint">${count} estudiantes</div>`;
+      dz.style.borderColor='var(--success)';
+      toast(`${count} estudiantes de ${level}`,'success');
+      updateImportStats();updatePreviewFilters();renderPreview();updateAssignmentUI();
+      if(state.engStudents.length) runEngCrossref();
+    } catch(err){toast('Error: '+err.message,'error');console.error(err);}
   };
   reader.readAsArrayBuffer(file);
 }
 
-function updateImportStats() {
-  const t = state.students.length, p = state.students.filter(s=>s.level==='primaria').length;
-  const s = state.students.filter(s=>s.level==='secundaria').length;
-  const g = new Set(state.students.map(s=>s.curso+'|'+s.grupo)).size;
-  document.getElementById('importStats').innerHTML = `
-    <div class="stat-card"><div class="number">${t}</div><div class="label-text">Total</div></div>
+function updateImportStats(){
+  const t=state.students.length,p=state.students.filter(s=>s.level==='primaria').length;
+  const s=state.students.filter(s=>s.level==='secundaria').length;
+  const g=new Set(state.students.map(s=>s.curso+'|'+s.grupo)).size;
+  document.getElementById('importStats').innerHTML=`
+    <div class="stat-card"><div class="number">${t}</div><div class="label-text">Total SIGED</div></div>
     <div class="stat-card"><div class="number">${p}</div><div class="label-text">Primaria</div></div>
     <div class="stat-card"><div class="number">${s}</div><div class="label-text">Secundaria</div></div>
     <div class="stat-card"><div class="number">${g}</div><div class="label-text">Grupos</div></div>`;
 }
+function updatePreviewFilters(){
+  const levels=[...new Set(state.students.map(s=>s.level))].sort();
+  document.getElementById('previewLevel').innerHTML='<option value="all">Todos</option>'+levels.map(l=>`<option value="${l}">${l}</option>`).join('');
+  updateGroupFilter();
+  document.getElementById('previewCard').style.display=state.students.length?'block':'none';
+}
+function updateGroupFilter(){
+  const lv=document.getElementById('previewLevel').value;
+  const f=lv==='all'?state.students:state.students.filter(s=>s.level===lv);
+  const g=[...new Set(f.map(s=>s.curso+' '+s.grupo))].sort();
+  document.getElementById('previewGroup').innerHTML='<option value="all">Todos</option>'+g.map(x=>`<option value="${x}">${x}</option>`).join('');
+}
+function renderPreview(){
+  updateGroupFilter();
+  let f=[...state.students];
+  const lv=document.getElementById('previewLevel').value,gr=document.getElementById('previewGroup').value;
+  if(lv!=='all')f=f.filter(s=>s.level===lv);
+  if(gr!=='all')f=f.filter(s=>(s.curso+' '+s.grupo)===gr);
+  document.getElementById('previewCount').textContent=f.length+' estudiantes';
+  document.getElementById('previewBody').innerHTML=f.slice(0,200).map(s=>`<tr><td>${s.curso}</td><td>${s.grupo}</td><td>${s.nro}</td><td>${s.fullName}</td><td>${s.ap1}</td><td>${s.ap2}</td><td>${s.n1}</td></tr>`).join('');
+}
 
-function updatePreviewFilters() {
-  const levels = [...new Set(state.students.map(s=>s.level))].sort();
-  document.getElementById('previewLevel').innerHTML = '<option value="all">Todos</option>' + levels.map(l=>`<option value="${l}">${l}</option>`).join('');
-  updateGroupFilter();
-  document.getElementById('previewCard').style.display = state.students.length ? 'block' : 'none';
+// ===================== ENGLISH GROUPS IMPORT =====================
+function importEngGroups(file) {
+  const reader=new FileReader();
+  reader.onload=function(e){
+    try {
+      const wb=XLSX.read(e.target.result,{type:'array'});
+      const students=[];
+
+      wb.SheetNames.forEach(sheetName=>{
+        const ws=wb.Sheets[sheetName];
+        const rows=XLSX.utils.sheet_to_json(ws,{header:1,defval:''});
+        if(!rows.length)return;
+
+        // Row 0: class names in certain columns, Row 1: professors
+        // Find class columns: non-empty cells in row 0 (excluding col 0 which is "Curso ")
+        const headerRow=rows[0];
+        const classColumns=[]; // { col, className }
+        for(let c=1;c<headerRow.length;c++){
+          const v=String(headerRow[c]||'').trim();
+          if(v&&v!=='Curso'){
+            // Extract clean class name (remove SALÓN info)
+            const cleanName=v.replace(/\s*\([^)]*\)\s*/g,'').trim();
+            classColumns.push({col:c,className:cleanName,rawName:v});
+          }
+        }
+
+        // Data rows start at row 2 (index 2)
+        for(let r=2;r<rows.length;r++){
+          const row=rows[r];
+          classColumns.forEach(({col,className})=>{
+            const val=row[col];
+            if(!val||!String(val).trim())return;
+            const rawName=String(val).trim();
+            // Remove annotations like "- 3° EMS", "- CIEI Colón", etc.
+            const cleanName=rawName.replace(/\s*-\s*.+$/, '').trim();
+            if(!cleanName)return;
+
+            // Parse name: detect format
+            // Sheet 1 (1ºEMS): "Apellido Nombre" or "Apellido Nombre1 Nombre2"
+            // Sheet 2 (2-3ºEMS): "APELLIDO1 APELLIDO2 Nombre" or "APELLIDO Nombre"
+            const parts=cleanName.split(/\s+/);
+            let ap1='',ap2='',n1='',n2='';
+            // Detect if uppercase-heavy (sheet 2 format)
+            const upperCount=parts.filter(p=>p===p.toUpperCase()&&p.length>1&&/[A-ZÁÉÍÓÚÑÜ]/.test(p)).length;
+            if(upperCount>=1&&upperCount>=parts.length/2){
+              // APELLIDO [APELLIDO2] Nombre [Nombre2]
+              const apParts=[],nParts=[];
+              parts.forEach(p=>{
+                if(p===p.toUpperCase()&&p.length>1&&/[A-ZÁÉÍÓÚÑÜ]/.test(p))apParts.push(p);
+                else nParts.push(p);
+              });
+              ap1=apParts[0]||'';ap2=apParts[1]||'';
+              n1=nParts[0]||'';n2=nParts[1]||'';
+            } else {
+              // Apellido Nombre [Nombre2] (mixed case)
+              ap1=parts[0]||'';n1=parts[1]||'';n2=parts[2]||'';
+            }
+
+            // Detect level tag from class name
+            const cnUp=className.toUpperCase();
+            let levelTag='other';
+            if(cnUp.includes('FCE'))levelTag='fce';
+            else if(cnUp.includes('CAE'))levelTag='cae';
+            else if(cnUp.includes('CPE'))levelTag='cpe';
+
+            students.push({
+              engClassName:className,levelTag,
+              rawName,cleanName,ap1,ap2,n1,n2,
+              annotation:rawName!==cleanName?rawName.match(/\s*-\s*(.+)$/)?.[1]:'',
+              sigedMatch:null,matchScore:0,manual:false
+            });
+          });
+        });
+      });
+
+      state.engStudents=students;
+      document.getElementById('engBadge').textContent=students.length;
+      const dz=document.getElementById('dropEngGroups');
+      dz.innerHTML=`<span class="icon">✅</span><div class="label">${file.name}</div><div class="hint">${students.length} alumnos en ${[...new Set(students.map(s=>s.engClassName))].length} grupos</div>`;
+      dz.style.borderColor='var(--purple)';
+
+      // Update stats
+      const classes=[...new Set(students.map(s=>s.engClassName))];
+      const byLevel={fce:0,cae:0,cpe:0};
+      students.forEach(s=>{if(byLevel[s.levelTag]!==undefined)byLevel[s.levelTag]++;});
+      document.getElementById('engStats').innerHTML=`
+        <div class="stat-card"><div class="number">${students.length}</div><div class="label-text">Total Alumnos</div></div>
+        <div class="stat-card"><div class="number">${classes.length}</div><div class="label-text">Grupos</div></div>
+        <div class="stat-card"><div class="number" style="color:var(--success);">${byLevel.fce}</div><div class="label-text">FCE</div></div>
+        <div class="stat-card"><div class="number" style="color:var(--warning);">${byLevel.cae}</div><div class="label-text">CAE</div></div>
+        <div class="stat-card"><div class="number" style="color:var(--purple);">${byLevel.cpe}</div><div class="label-text">CPE</div></div>`;
+
+      toast(`${students.length} alumnos de inglés importados`,'success');
+      if(state.students.length) runEngCrossref();
+      updateEngAssignUI();
+    } catch(err){toast('Error: '+err.message,'error');console.error(err);}
+  };
+  reader.readAsArrayBuffer(file);
 }
-function updateGroupFilter() {
-  const level = document.getElementById('previewLevel').value;
-  const filtered = level==='all' ? state.students : state.students.filter(s=>s.level===level);
-  const groups = [...new Set(filtered.map(s=>s.curso+' '+s.grupo))].sort();
-  document.getElementById('previewGroup').innerHTML = '<option value="all">Todos</option>' + groups.map(g=>`<option value="${g}">${g}</option>`).join('');
+
+// ===================== ENG CROSSREF =====================
+function nameSimilarity(a, b) {
+  // Returns 0-100 similarity score between two name strings
+  const na=normalizeStr(a).replace(/[^a-z]/g,' ').split(/\s+/).filter(x=>x.length>1);
+  const nb=normalizeStr(b).replace(/[^a-z]/g,' ').split(/\s+/).filter(x=>x.length>1);
+  if(!na.length||!nb.length)return 0;
+  let matches=0;
+  na.forEach(ta=>{
+    nb.forEach(tb=>{
+      if(ta===tb)matches+=2;
+      else if(ta.length>=3&&tb.startsWith(ta.substring(0,3)))matches+=1;
+      else if(tb.length>=3&&ta.startsWith(tb.substring(0,3)))matches+=1;
+    });
+  });
+  return Math.round(matches/(na.length+nb.length)*100);
 }
-function renderPreview() {
-  updateGroupFilter();
-  let f = [...state.students];
-  const lv = document.getElementById('previewLevel').value, gr = document.getElementById('previewGroup').value;
-  if(lv!=='all') f=f.filter(s=>s.level===lv);
-  if(gr!=='all') f=f.filter(s=>(s.curso+' '+s.grupo)===gr);
-  document.getElementById('previewCount').textContent = f.length + ' estudiantes';
-  document.getElementById('previewBody').innerHTML = f.slice(0,200).map(s=>`<tr><td>${s.curso}</td><td>${s.grupo}</td><td>${s.nro}</td><td>${s.fullName}</td><td>${s.ap1}</td><td>${s.ap2}</td><td>${s.n1}</td></tr>`).join('');
+
+function runEngCrossref() {
+  // For each eng student, find best match in SIGED
+  // Only look in EMS students
+  const emsStudents=state.students.filter(s=>s.curso&&s.curso.includes('EMS'));
+
+  state.engStudents.forEach(eng=>{
+    if(eng.manual)return; // Don't overwrite manual assignments
+    let best=null,bestScore=0;
+    emsStudents.forEach(s=>{
+      // Build search name from eng student
+      const engSearchName=`${eng.ap1} ${eng.ap2} ${eng.n1} ${eng.n2}`.trim();
+      const sigedSearchName=`${s.ap1} ${s.ap2} ${s.n1} ${s.n2} ${s.fullName}`.trim();
+      const score=nameSimilarity(engSearchName,sigedSearchName);
+      if(score>bestScore){bestScore=score;best=s;}
+    });
+    eng.sigedMatch=bestScore>=25?best:null;
+    eng.matchScore=bestScore;
+  });
+
+  renderEngCrossref();
+  updateEngCrossrefFilters();
+  document.getElementById('engCrossrefCard').style.display='block';
+}
+
+function rematchAll(){
+  state.engStudents.forEach(eng=>{eng.manual=false;eng.sigedMatch=null;eng.matchScore=0;});
+  runEngCrossref();
+  toast('Re-cruzando todo...','info');
+}
+
+function updateEngCrossrefFilters(){
+  const classes=[...new Set(state.engStudents.map(s=>s.engClassName))].sort();
+  document.getElementById('engFilter').innerHTML='<option value="all">Todas</option>'+classes.map(c=>`<option value="${c}">${c}</option>`).join('');
+  updateEngCrossrefSummary();
+}
+
+function updateEngCrossrefSummary(){
+  const total=state.engStudents.length;
+  const matched=state.engStudents.filter(s=>s.sigedMatch).length;
+  const manual=state.engStudents.filter(s=>s.manual).length;
+  document.getElementById('engCrossrefSummary').textContent=`${matched}/${total} encontrados, ${manual} manuales`;
+}
+
+function renderEngCrossref(){
+  const classFilter=document.getElementById('engFilter').value;
+  const statusFilter=document.getElementById('engStatusFilter').value;
+  let students=[...state.engStudents];
+  if(classFilter!=='all')students=students.filter(s=>s.engClassName===classFilter);
+  if(statusFilter==='matched')students=students.filter(s=>s.sigedMatch&&!s.manual);
+  else if(statusFilter==='unmatched')students=students.filter(s=>!s.sigedMatch&&!s.manual);
+  else if(statusFilter==='manual')students=students.filter(s=>s.manual);
+
+  const tbody=document.getElementById('engCrossrefBody');
+  const levelColors={fce:'tag-fce',cae:'tag-cae',cpe:'tag-cpe',other:'tag-other'};
+  const emsStudents=state.students.filter(s=>s.curso&&s.curso.includes('EMS'));
+
+  tbody.innerHTML=students.map((eng,fi)=>{
+    const realIdx=state.engStudents.indexOf(eng);
+    const matchStatus=eng.sigedMatch?'match-ok':eng.manual?'match-warn':'match-none';
+    const matchLabel=eng.sigedMatch?`${eng.sigedMatch.ap1} ${eng.sigedMatch.n1}`:eng.manual?'(manual)':'❌ Sin cruce';
+    const matchCurso=eng.sigedMatch?`${eng.sigedMatch.curso} ${eng.sigedMatch.grupo}`:'—';
+
+    // Build SIGED options for override
+    const topMatches=emsStudents
+      .map(s=>({s,score:nameSimilarity(`${eng.ap1} ${eng.ap2} ${eng.n1}`,`${s.ap1} ${s.ap2} ${s.n1}`)}))
+      .filter(x=>x.score>0)
+      .sort((a,b)=>b.score-a.score)
+      .slice(0,10);
+
+    const matchColor=eng.matchScore>=60?'var(--success)':eng.matchScore>=30?'var(--warning)':'var(--danger)';
+
+    return `<tr>
+      <td><span class="eng-group-tag ${levelColors[eng.levelTag]||'tag-other'}" style="font-size:10px;">${eng.engClassName}</span></td>
+      <td><span class="eng-group-tag ${levelColors[eng.levelTag]||'tag-other'}">${eng.levelTag.toUpperCase()}</span></td>
+      <td><span style="font-weight:500;">${eng.rawName}</span></td>
+      <td>
+        <select style="min-width:200px;font-size:11px;" onchange="overrideEngMatch(${realIdx},this.value)">
+          <option value="">— Sin asignar —</option>
+          ${topMatches.map(({s,score})=>`<option value="${s.ap1}|${s.ap2}|${s.n1}|${s.n2}|${s.curso}|${s.grupo}|${s.fullName}" ${(eng.sigedMatch&&eng.sigedMatch.ap1===s.ap1&&eng.sigedMatch.n1===s.n1)?'selected':''}>${s.ap1} ${s.ap2} ${s.n1} (${s.curso}) — ${score}%</option>`).join('')}
+        </select>
+      </td>
+      <td style="font-size:11px;color:var(--text-dim);">${matchCurso}</td>
+      <td><span style="font-family:var(--mono);font-size:11px;color:${matchColor};">${eng.matchScore}%</span></td>
+      <td>${eng.sigedMatch?`<span class="status status-ok" style="font-size:10px;">✓</span>`:`<span class="status status-err" style="font-size:10px;">✗</span>`}</td>
+    </tr>`;
+  }).join('');
+
+  updateEngCrossrefSummary();
+}
+
+function overrideEngMatch(realIdx, value){
+  const eng=state.engStudents[realIdx];
+  if(!value){eng.sigedMatch=null;eng.manual=true;eng.matchScore=0;return;}
+  const [ap1,ap2,n1,n2,curso,grupo,fullName]=value.split('|');
+  eng.sigedMatch={ap1,ap2,n1,n2,curso,grupo,fullName};
+  eng.manual=true;
+  eng.matchScore=100;
+  renderEngCrossref();
+}
+
+// ===================== ENG ASSIGN UI =====================
+function updateEngAssignUI(){
+  const engClasses=[...new Set(state.engStudents.map(s=>s.engClassName))].sort();
+  const classNames=Object.keys(state.classKeys);
+  if(!engClasses.length){
+    document.getElementById('engAssignUI').innerHTML='<div style="text-align:center;padding:28px;color:var(--text-dim);">⚠️ Cargá la planilla de grupos de inglés primero (pestaña 🇬🇧 Grupos Inglés)</div>';
+    return;
+  }
+  if(!classNames.length){
+    document.getElementById('engAssignUI').innerHTML='<div style="text-align:center;padding:28px;color:var(--text-dim);">⚠️ Cargá los códigos de clase Cambridge primero (pestaña 🔑 Clases)</div>';
+    return;
+  }
+  const levelColors={fce:'tag-fce',cae:'tag-cae',cpe:'tag-cpe',other:'tag-other'};
+  const getLevelTag=cn=>{const u=cn.toUpperCase();return u.includes('FCE')?'fce':u.includes('CAE')?'cae':u.includes('CPE')?'cpe':'other';};
+  const studentCount=cls=>state.engStudents.filter(s=>s.engClassName===cls).length;
+  const matchedCount=cls=>state.engStudents.filter(s=>s.engClassName===cls&&s.sigedMatch).length;
+
+  let html='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:8px;">';
+  engClasses.forEach(cls=>{
+    const assigned=state.engAssignments[cls]||'';
+    const lt=getLevelTag(cls);
+    const sc=studentCount(cls),mc=matchedCount(cls);
+    html+=`<div style="background:var(--bg-input);padding:11px 14px;border-radius:var(--radius-sm);border:1px solid ${assigned?'var(--success)':'var(--border)'};">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span class="eng-group-tag ${levelColors[lt]}">${lt.toUpperCase()}</span>
+        <span style="font-weight:600;font-size:13px;">${cls}</span>
+        <span style="font-size:11px;color:var(--text-dim);margin-left:auto;">${mc}/${sc} cruces</span>
+      </div>
+      <select onchange="assignEngClass('${escapeHtml(cls)}',this.value)" style="width:100%;${assigned?'border-color:var(--success)33;':''}">
+        <option value="">— Seleccionar clase Cambridge —</option>
+        ${classNames.map(c=>`<option value="${c}" ${assigned===c?'selected':''}>${c} (${state.classKeys[c]?.code||'?'})</option>`).join('')}
+      </select>
+    </div>`;
+  });
+  html+='</div>';
+  document.getElementById('engAssignUI').innerHTML=html;
+}
+
+function assignEngClass(engClassName, cambridgeClass){
+  if(cambridgeClass) state.engAssignments[engClassName]=cambridgeClass;
+  else delete state.engAssignments[engClassName];
+}
+
+function applyEngGroups(){
+  // Generate accounts for all eng students that have a sigedMatch and a class assignment
+  let generated=0,skipped=0;
+  const usedUsernames=new Set(state.accounts.filter(a=>a.source==='siged').map(a=>a.username));
+
+  // Remove previous english accounts
+  state.accounts=state.accounts.filter(a=>a.source!=='english');
+
+  state.engStudents.forEach(eng=>{
+    const cambridgeClass=state.engAssignments[eng.engClassName];
+    if(!cambridgeClass){skipped++;return;}
+    const classInfo=state.classKeys[cambridgeClass];
+    if(!classInfo){skipped++;return;}
+
+    // Use SIGED data if matched, otherwise use eng data
+    const s=eng.sigedMatch;
+    const ap1=s?s.ap1:eng.ap1;
+    const ap2=s?s.ap2:eng.ap2;
+    const n1=s?s.n1:eng.n1;
+    const n2=s?s.n2:eng.n2;
+    const curso=s?s.curso:'EMS';
+    const grupo=s?s.grupo:'';
+    const fullName=s?s.fullName:eng.cleanName;
+
+    const fakeS={ap1,ap2,n1,n2,curso,grupo,fullName,n2:n2||''};
+    const username=buildUsernameForStudent(fakeS,usedUsernames);
+    usedUsernames.add(username);
+    const password=buildPasswordForStudent(fakeS);
+
+    state.accounts.push({
+      className:cambridgeClass,
+      classKey:classInfo.code,
+      firstName:n1+(n2?' '+n2:''),
+      lastName:ap1+(ap2?' '+ap2:''),
+      username,password,
+      curso,grupo,fullName,
+      source:'english',
+      engClassName:eng.engClassName,
+      levelTag:eng.levelTag,
+      matchScore:eng.matchScore,
+    });
+    generated++;
+  });
+
+  state.editedAccounts={};
+  document.getElementById('accountsBadge').textContent=state.accounts.length;
+  updateAccountFilters();renderAccounts();updateExportFilters();updateExportSplitPreview();
+  toast(`${generated} cuentas de bachillerato generadas, ${skipped} sin asignar`,'success');
+  if(skipped>0) toast(`${skipped} alumnos sin clase asignada — revisá las asignaciones en el panel Asignar`,'info');
 }
 
 // ===================== CLASS KEYS =====================
-function parseClassKeys() {
-  const input = document.getElementById('classKeysInput').value.trim();
-  if(!input) { toast('Pegá el texto primero', 'error'); return; }
-  const lines = input.split('\n').map(l=>l.trim()).filter(l=>l);
-  const parsed = {};
-  let i = 0;
-  while(i < lines.length) {
-    if(i+1 < lines.length && lines[i+1].includes('Copy')) {
-      const className = lines[i];
-      const code = lines[i+1].replace(/\s*Copy\s*$/, '').trim();
-      let startDate = '', endDate = '';
-      if(i+2 < lines.length && /^[A-Z][a-z]{2}\s/.test(lines[i+2])) startDate = lines[i+2];
-      if(i+3 < lines.length && /^[A-Z][a-z]{2}\s/.test(lines[i+3])) endDate = lines[i+3];
-      parsed[className] = { code, startDate, endDate };
-      i += 4;
-      while(i < lines.length && lines[i] === 'Show class details') i++;
-    } else { i++; }
+function parseClassKeys(){
+  const input=document.getElementById('classKeysInput').value.trim();
+  if(!input){toast('Pegá el texto primero','error');return;}
+  const lines=input.split('\n').map(l=>l.trim()).filter(l=>l);
+  const parsed={};let i=0;
+  while(i<lines.length){
+    if(i+1<lines.length&&lines[i+1].includes('Copy')){
+      const className=lines[i];
+      const code=lines[i+1].replace(/\s*Copy\s*$/,'').trim();
+      let startDate='',endDate='';
+      if(i+2<lines.length&&/^[A-Z][a-z]{2}\s/.test(lines[i+2]))startDate=lines[i+2];
+      if(i+3<lines.length&&/^[A-Z][a-z]{2}\s/.test(lines[i+3]))endDate=lines[i+3];
+      parsed[className]={code,startDate,endDate};
+      i+=4;while(i<lines.length&&lines[i]==='Show class details')i++;
+    }else{i++;}
   }
-  state.classKeys = { ...state.classKeys, ...parsed };
-  renderClassKeys(); updateAssignmentUI(); updateExportFilters();
-  toast(`${Object.keys(parsed).length} clases detectadas`, 'success');
+  state.classKeys={...state.classKeys,...parsed};
+  renderClassKeys();updateAssignmentUI();updateEngAssignUI();updateExportFilters();
+  toast(`${Object.keys(parsed).length} clases detectadas`,'success');
 }
 
-function addManualClass() {
-  const name = document.getElementById('manClassName').value.trim();
-  const code = document.getElementById('manClassCode').value.trim();
-  const start = document.getElementById('manClassStart').value.trim();
-  const end = document.getElementById('manClassEnd').value.trim();
-  if(!name || !code) { toast('Nombre y código son obligatorios', 'error'); return; }
-  state.classKeys[name] = { code, startDate: start, endDate: end };
-  document.getElementById('manClassName').value = '';
-  document.getElementById('manClassCode').value = '';
-  document.getElementById('manClassStart').value = '';
-  document.getElementById('manClassEnd').value = '';
-  renderClassKeys(); renderManualList(); updateAssignmentUI(); updateExportFilters();
-  toast(`Clase "${name}" agregada`, 'success');
+function addManualClass(){
+  const name=document.getElementById('manClassName').value.trim();
+  const code=document.getElementById('manClassCode').value.trim();
+  const start=document.getElementById('manClassStart').value.trim();
+  const end=document.getElementById('manClassEnd').value.trim();
+  if(!name||!code){toast('Nombre y código obligatorios','error');return;}
+  state.classKeys[name]={code,startDate:start,endDate:end};
+  ['manClassName','manClassCode','manClassStart','manClassEnd'].forEach(id=>document.getElementById(id).value='');
+  renderClassKeys();renderManualList();updateAssignmentUI();updateEngAssignUI();updateExportFilters();
+  toast(`Clase "${name}" agregada`,'success');
 }
 
-function renderManualList() {
-  const list = document.getElementById('manualClassList');
-  const entries = Object.entries(state.classKeys);
-  if(!entries.length) { list.innerHTML = '<p style="font-size:13px;color:var(--text-dim);text-align:center;padding:20px;">No hay clases cargadas todavía</p>'; return; }
-  list.innerHTML = entries.map(([name, info]) => `
+function renderManualList(){
+  const list=document.getElementById('manualClassList');
+  const entries=Object.entries(state.classKeys);
+  if(!entries.length){list.innerHTML='<p style="font-size:13px;color:var(--text-dim);text-align:center;padding:16px;">No hay clases cargadas</p>';return;}
+  list.innerHTML=entries.map(([name,info])=>`
     <div class="class-list-item">
-      <div style="flex:1;">
-        <div class="cls-name">${name}</div>
-        <div style="display:flex;gap:12px;align-items:center;margin-top:2px;">
-          <span class="cls-code">${info.code}</span>
-          <span class="cls-dates">${info.startDate} → ${info.endDate}</span>
+      <div style="flex:1;"><div style="font-weight:600;font-size:13px;">${name}</div>
+        <div style="display:flex;gap:10px;align-items:center;margin-top:2px;">
+          <span style="font-family:var(--mono);font-size:12px;color:var(--accent);">${info.code}</span>
+          <span style="font-size:11px;color:var(--text-dim);">${info.startDate} → ${info.endDate}</span>
         </div>
       </div>
       <button class="remove-btn" onclick="removeClassKey('${escapeHtml(name)}')">✕</button>
     </div>`).join('');
 }
 
-function removeClassKey(name) {
+function removeClassKey(name){
   delete state.classKeys[name];
-  if(state.assignments) {
-    Object.keys(state.assignments).forEach(k => { if(state.assignments[k]===name) delete state.assignments[k]; });
-  }
-  renderClassKeys(); renderManualList(); updateAssignmentUI(); updateExportFilters();
+  Object.keys(state.assignments).forEach(k=>{if(state.assignments[k]===name)delete state.assignments[k];});
+  Object.keys(state.engAssignments).forEach(k=>{if(state.engAssignments[k]===name)delete state.engAssignments[k];});
+  renderClassKeys();renderManualList();updateAssignmentUI();updateEngAssignUI();updateExportFilters();
 }
 
-function clearAllClassKeys() {
-  if(!confirm('¿Borrar todas las clases?')) return;
-  state.classKeys = {}; state.assignments = {};
-  renderClassKeys(); renderManualList(); updateAssignmentUI();
-  document.getElementById('classKeysInput').value = '';
+function clearAllClassKeys(){
+  if(!confirm('¿Borrar todas las clases?'))return;
+  state.classKeys={};state.assignments={};state.engAssignments={};
+  renderClassKeys();renderManualList();updateAssignmentUI();updateEngAssignUI();
+  document.getElementById('classKeysInput').value='';
 }
 
-function renderClassKeys() {
-  const keys = state.classKeys;
-  const count = Object.keys(keys).length;
+function renderClassKeys(){
+  const keys=state.classKeys,count=Object.keys(keys).length;
   renderManualList();
-  if(!count) { document.getElementById('classKeysResult').style.display = 'none'; return; }
-  document.getElementById('classKeysResult').style.display = 'block';
-  document.getElementById('classKeysCount').textContent = count;
-  document.getElementById('classKeysGrid').innerHTML = Object.entries(keys).map(([name, info]) => `
+  if(!count){document.getElementById('classKeysResult').style.display='none';return;}
+  document.getElementById('classKeysResult').style.display='block';
+  document.getElementById('classKeysCount').textContent=count;
+  document.getElementById('classKeysGrid').innerHTML=Object.entries(keys).map(([name,info])=>`
     <div class="key-card">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;">
         <div class="class-name">${name}</div>
-        <button onclick="removeClassKey('${escapeHtml(name)}')" style="background:none;border:none;color:var(--danger);cursor:pointer;font-size:14px;padding:0;">✕</button>
+        <button onclick="removeClassKey('${escapeHtml(name)}')" style="background:none;border:none;color:var(--danger);cursor:pointer;font-size:13px;padding:0;">✕</button>
       </div>
       <div class="class-code">${info.code}</div>
-      <div class="class-dates">${info.startDate} → ${info.endDate}</div>
+      <div style="font-size:11px;color:var(--text-dim);margin-top:3px;">${info.startDate} → ${info.endDate}</div>
     </div>`).join('');
 }
 
-// ===================== AUTO-ASSIGN =====================
-function autoAssign() {
-  const groups = getUniqueGroups();
-  const classNames = Object.keys(state.classKeys);
-  if(!groups.length) { toast('Importá estudiantes primero', 'error'); return; }
-  if(!classNames.length) { toast('Cargá códigos de clase primero', 'error'); return; }
-
-  let matched = 0;
-  const preview = [];
-
-  groups.forEach(g => {
-    const label = formatGroupLabel(g).toLowerCase().replace(/[°º]/g,'').trim();
-    const curso = g.curso.toLowerCase();
-    let best = null, bestScore = 0;
-
-    classNames.forEach(cn => {
-      const cnl = cn.toLowerCase();
-      let score = 0;
-      // Extract numbers from curso and class name
-      const cursoNums = curso.match(/\d+/g) || [];
-      const cnNums = cnl.match(/\d+/g) || [];
-      cursoNums.forEach(n => { if(cnl.includes(n)) score += 3; });
-      // Level keywords
-      const levelKeywords = { 'ems': ['ems','bachillerato','liceo'], 'ebi': ['ebi','media','secundaria'] };
-      const sufix = curso.includes('ems') ? 'ems' : (curso.includes('ebi') ? 'ebi' : '');
-      if(sufix && levelKeywords[sufix]?.some(k => cnl.includes(k))) score += 2;
-      if(cnl.includes(sufix)) score += 2;
-      // Group letter
-      if(g.grupo && g.grupo !== 'ÚNICO' && cnl.includes(g.grupo.toLowerCase())) score += 2;
-      if(score > bestScore) { bestScore = score; best = cn; }
-    });
-
-    const key = g.curso + '|' + g.grupo;
-    preview.push({ g, key, suggested: best, score: bestScore, confirmed: bestScore >= 3 });
-    if(bestScore >= 3) { state.assignments[key] = best; matched++; }
-  });
-
-  renderAutoAssignPreview(preview);
-  updateAssignmentUI();
-  generateAccounts();
-  toast(`${matched} grupos asignados automáticamente`, matched > 0 ? 'success' : 'info');
-}
-
-function renderAutoAssignPreview(preview) {
-  if(!preview.length) return;
-  const classNames = Object.keys(state.classKeys);
-  let html = '<div style="display:flex;flex-direction:column;gap:6px;">';
-  preview.forEach(({g, key, suggested, score, confirmed}) => {
-    const color = confirmed ? 'var(--success)' : 'var(--warning)';
-    const icon = confirmed ? '✅' : '⚠️';
-    html += `
-      <div style="display:flex;align-items:center;gap:10px;background:var(--bg-input);padding:9px 12px;border-radius:var(--radius-sm);border:1px solid ${confirmed?'var(--success)':'var(--warning)'}22;">
-        <span>${icon}</span>
-        <span style="min-width:140px;font-weight:500;font-size:13px;">${formatGroupLabel(g)}</span>
-        <span style="color:var(--text-dim);font-size:12px;">→</span>
-        <select onchange="assignClass('${key}',this.value)" style="flex:1;border-color:${color}22;">
-          <option value="">— Sin asignar —</option>
-          ${classNames.map(c=>`<option value="${c}" ${c===suggested?'selected':''}>${c}</option>`).join('')}
-        </select>
-        <span style="font-size:11px;color:var(--text-dim);">score:${score}</span>
-      </div>`;
-  });
-  html += '</div>';
-  document.getElementById('autoAssignPreview').innerHTML = html;
-}
-
-function clearAllAssignments() {
-  if(!confirm('¿Borrar todas las asignaciones?')) return;
-  state.assignments = {};
-  state.accounts = [];
-  state.editedAccounts = {};
-  document.getElementById('accountsBadge').textContent = '0';
-  updateAssignmentUI();
-  document.getElementById('autoAssignPreview').innerHTML = '';
-  toast('Asignaciones borradas', 'info');
-}
-
-// ===================== ASSIGNMENT UI =====================
-function getUniqueGroups() {
-  const groups = new Map();
-  state.students.forEach(s => {
-    const key = s.curso+'|'+s.grupo;
-    if(!groups.has(key)) groups.set(key, {curso:s.curso, grupo:s.grupo, count:0, level:s.level});
+// ===================== ASSIGN (non-EMS) =====================
+function getUniqueGroups(){
+  const groups=new Map();
+  // Only non-EMS groups for the regular assignment panel
+  state.students.filter(s=>!s.curso.includes('EMS')).forEach(s=>{
+    const key=s.curso+'|'+s.grupo;
+    if(!groups.has(key))groups.set(key,{curso:s.curso,grupo:s.grupo,count:0,level:s.level});
     groups.get(key).count++;
   });
-  return [...groups.values()].sort((a,b) => {
-    const order = {'7-EBI':1,'8-EBI':2,'9-EBI':3,'1-EMS':4,'2CSH-EMS':5,'2CT-EMS':5,'2CV-EMS':5,'3CAD-EMS':6,'3CT-EMS':6,'3CVH-EMS':6,'3HCE-EMS':6,'3HCP-EMS':6};
-    return ((order[a.curso]||0) - (order[b.curso]||0)) || a.grupo.localeCompare(b.grupo);
+  return [...groups.values()].sort((a,b)=>{
+    const order={'7-EBI':1,'8-EBI':2,'9-EBI':3,'1-EMS':4,'2CSH-EMS':5,'2CT-EMS':5,'2CV-EMS':5,'3CAD-EMS':6,'3CT-EMS':6,'3CVH-EMS':6,'3HCE-EMS':6,'3HCP-EMS':6};
+    return ((order[a.curso]||0)-(order[b.curso]||0))||a.grupo.localeCompare(b.grupo);
   });
 }
 
-function formatGroupLabel(g) {
-  const labels = {'7-EBI':'7mo','8-EBI':'8vo','9-EBI':'9no','1-EMS':'1° EMS','2CSH-EMS':'2° CSH','2CT-EMS':'2° CT','2CV-EMS':'2° CV','3CAD-EMS':'3° CAD','3CT-EMS':'3° CT','3CVH-EMS':'3° CVH','3HCE-EMS':'3° HCE','3HCP-EMS':'3° HCP'};
-  const base = labels[g.curso] || g.curso;
-  return g.grupo && g.grupo !== 'ÚNICO' ? `${base} ${g.grupo}` : base;
+function formatGroupLabel(g){
+  const labels={'7-EBI':'7mo','8-EBI':'8vo','9-EBI':'9no','1-EMS':'1° EMS','2CSH-EMS':'2° CSH','2CT-EMS':'2° CT','2CV-EMS':'2° CV','3CAD-EMS':'3° CAD','3CT-EMS':'3° CT','3CVH-EMS':'3° CVH','3HCE-EMS':'3° HCE','3HCP-EMS':'3° HCP'};
+  const base=labels[g.curso]||g.curso;
+  return g.grupo&&g.grupo!=='ÚNICO'?`${base} ${g.grupo}`:base;
 }
 
-function updateAssignmentUI() {
-  const groups = getUniqueGroups();
-  const classNames = Object.keys(state.classKeys);
-  if(!groups.length || !classNames.length) {
-    document.getElementById('assignmentUI').innerHTML = `<div style="text-align:center;padding:36px;color:var(--text-dim);">${!groups.length?'⚠️ Importá datos primero':'⚠️ Cargá códigos de clase primero'}</div>`;
-    document.getElementById('assignmentSummary').innerHTML = '';
-    return;
+function autoAssign(){
+  const groups=getUniqueGroups(),classNames=Object.keys(state.classKeys);
+  if(!groups.length){toast('No hay grupos no-EMS para asignar','info');return;}
+  if(!classNames.length){toast('Cargá códigos de clase primero','error');return;}
+  let matched=0;const preview=[];
+  groups.forEach(g=>{
+    const curso=g.curso.toLowerCase();
+    let best=null,bestScore=0;
+    classNames.forEach(cn=>{
+      const cnl=cn.toLowerCase();
+      let score=0;
+      (curso.match(/\d+/g)||[]).forEach(n=>{if(cnl.includes(n))score+=3;});
+      const sufix=curso.includes('ems')?'ems':(curso.includes('ebi')?'ebi':'');
+      if(sufix&&cnl.includes(sufix))score+=2;
+      if(g.grupo&&g.grupo!=='ÚNICO'&&cnl.includes(g.grupo.toLowerCase()))score+=2;
+      if(score>bestScore){bestScore=score;best=cn;}
+    });
+    const key=g.curso+'|'+g.grupo;
+    preview.push({g,key,suggested:best,score:bestScore,confirmed:bestScore>=3});
+    if(bestScore>=3){state.assignments[key]=best;matched++;}
+  });
+  renderAutoAssignPreview(preview);updateAssignmentUI();generateSigedAccounts();
+  toast(`${matched} grupos asignados automáticamente`,matched>0?'success':'info');
+}
+
+function renderAutoAssignPreview(preview){
+  if(!preview.length)return;
+  const classNames=Object.keys(state.classKeys);
+  let html='<div style="display:flex;flex-direction:column;gap:5px;">';
+  preview.forEach(({g,key,suggested,score,confirmed})=>{
+    const color=confirmed?'var(--success)':'var(--warning)';
+    html+=`<div style="display:flex;align-items:center;gap:9px;background:var(--bg-input);padding:8px 12px;border-radius:var(--radius-sm);border:1px solid ${confirmed?'var(--success)':'var(--warning)'}22;">
+      <span>${confirmed?'✅':'⚠️'}</span>
+      <span style="min-width:130px;font-weight:500;font-size:13px;">${formatGroupLabel(g)}</span>
+      <span style="color:var(--text-dim);font-size:12px;">→</span>
+      <select onchange="assignClass('${key}',this.value)" style="flex:1;">
+        <option value="">— Sin asignar —</option>
+        ${classNames.map(c=>`<option value="${c}" ${c===suggested?'selected':''}>${c}</option>`).join('')}
+      </select>
+      <span style="font-size:11px;color:var(--text-dim);">score:${score}</span>
+    </div>`;
+  });
+  html+='</div>';
+  document.getElementById('autoAssignPreview').innerHTML=html;
+}
+
+function clearAllAssignments(){
+  if(!confirm('¿Borrar todas las asignaciones de grupos escolares?'))return;
+  state.assignments={};
+  state.accounts=state.accounts.filter(a=>a.source==='english');
+  updateAssignmentUI();document.getElementById('autoAssignPreview').innerHTML='';
+  document.getElementById('accountsBadge').textContent=state.accounts.length;
+  renderAccounts();toast('Asignaciones borradas','info');
+}
+
+function updateAssignmentUI(){
+  const groups=getUniqueGroups(),classNames=Object.keys(state.classKeys);
+  if(!groups.length||!classNames.length){
+    document.getElementById('assignmentUI').innerHTML=`<div style="text-align:center;padding:28px;color:var(--text-dim);">${!groups.length?'No hay grupos de Ciclo Básico/Primaria importados':'⚠️ Cargá códigos de clase primero'}</div>`;
+    document.getElementById('assignmentSummary').innerHTML='';return;
   }
-  const byCategory = {};
-  groups.forEach(g => {
-    const cat = g.curso.includes('EMS') ? 'Bachillerato (EMS)' : (parseInt(g.curso)>=7 ? 'Ciclo Básico (EBI)' : 'Primaria');
-    if(!byCategory[cat]) byCategory[cat]=[];
-    byCategory[cat].push(g);
+  const byCategory={};
+  groups.forEach(g=>{
+    const cat=g.curso.includes('EMS')?'Bachillerato (EMS)':(parseInt(g.curso)>=7?'Ciclo Básico (EBI)':'Primaria');
+    if(!byCategory[cat])byCategory[cat]=[];byCategory[cat].push(g);
   });
-  let html = '';
-  for(const [cat,grps] of Object.entries(byCategory)) {
-    html += `<h3 style="margin:14px 0 9px;font-size:13px;color:var(--accent);">${cat}</h3>`;
-    html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px;">';
-    grps.forEach(g => {
-      const key = g.curso+'|'+g.grupo, assigned = state.assignments[key]||'';
-      html += `<div style="display:flex;align-items:center;gap:9px;background:var(--bg-input);padding:9px 13px;border-radius:var(--radius-sm);border:1px solid ${assigned?'var(--success)':'var(--border)'};">
+  let html='';
+  for(const [cat,grps] of Object.entries(byCategory)){
+    html+=`<h3 style="margin:12px 0 8px;font-size:13px;color:var(--accent);">${cat}</h3>`;
+    html+='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:7px;">';
+    grps.forEach(g=>{
+      const key=g.curso+'|'+g.grupo,assigned=state.assignments[key]||'';
+      html+=`<div style="display:flex;align-items:center;gap:8px;background:var(--bg-input);padding:8px 12px;border-radius:var(--radius-sm);border:1px solid ${assigned?'var(--success)':'var(--border)'};">
         <div style="flex:1;"><div style="font-weight:600;font-size:13px;">${formatGroupLabel(g)}</div><div style="font-size:11px;color:var(--text-dim);">${g.count} estudiantes</div></div>
-        <select onchange="assignClass('${key}',this.value)" style="width:auto;min-width:130px;${assigned?'border-color:var(--success)33;':''}">
+        <select onchange="assignClass('${key}',this.value)" style="width:auto;min-width:120px;">
           <option value="">— Sin asignar —</option>
           ${classNames.map(c=>`<option value="${c}" ${assigned===c?'selected':''}>${c}</option>`).join('')}
         </select>
       </div>`;
     });
-    html += '</div>';
+    html+='</div>';
   }
-  document.getElementById('assignmentUI').innerHTML = html;
+  document.getElementById('assignmentUI').innerHTML=html;
   updateAssignmentSummary();
 }
 
-function assignClass(groupKey, className) {
-  if(className) state.assignments[groupKey] = className; else delete state.assignments[groupKey];
-  updateAssignmentSummary(); generateAccounts();
+function assignClass(groupKey,className){
+  if(className)state.assignments[groupKey]=className;else delete state.assignments[groupKey];
+  updateAssignmentSummary();generateSigedAccounts();
 }
 
-function updateAssignmentSummary() {
-  const assigned = Object.keys(state.assignments).length;
-  const total = getUniqueGroups().length;
-  const pct = total ? Math.round(assigned/total*100) : 0;
-  const perClass = {};
-  Object.entries(state.assignments).forEach(([gk,cls]) => {
-    const [curso,grupo] = gk.split('|');
-    const count = state.students.filter(s=>s.curso===curso&&s.grupo===grupo).length;
-    perClass[cls] = (perClass[cls]||0) + count;
+function updateAssignmentSummary(){
+  const assigned=Object.keys(state.assignments).length,total=getUniqueGroups().length;
+  const pct=total?Math.round(assigned/total*100):0;
+  const perClass={};
+  Object.entries(state.assignments).forEach(([gk,cls])=>{
+    const [curso,grupo]=gk.split('|');
+    const count=state.students.filter(s=>s.curso===curso&&s.grupo===grupo).length;
+    perClass[cls]=(perClass[cls]||0)+count;
   });
-  let html = `<div style="margin-bottom:10px;">
-    <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px;"><span>${assigned}/${total} grupos</span><span>${pct}%</span></div>
+  let html=`<div style="margin-bottom:8px;"><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px;"><span>${assigned}/${total} grupos</span><span>${pct}%</span></div>
     <div class="progress-bar"><div class="fill" style="width:${pct}%"></div></div></div>`;
-  if(Object.keys(perClass).length) {
-    html += '<div style="display:flex;flex-wrap:wrap;gap:6px;">';
-    Object.entries(perClass).forEach(([cls,cnt]) => { html += `<div class="chip">${cls}: <strong>${cnt}</strong></div>`; });
-    html += '</div>';
+  if(Object.keys(perClass).length){
+    html+='<div style="display:flex;flex-wrap:wrap;gap:5px;">';
+    Object.entries(perClass).forEach(([cls,cnt])=>{html+=`<div class="chip">${cls}: <strong>${cnt}</strong></div>`;});
+    html+='</div>';
   }
-  document.getElementById('assignmentSummary').innerHTML = html;
-}
-
-// ===================== CONFIG =====================
-document.getElementById('cfgUsernamePattern').addEventListener('change', function() {
-  document.getElementById('customUsernameGroup').style.display = this.value==='custom'?'block':'none';
-  updateConfigPreview();
-});
-
-function updatePwConfigUI() {
-  const method = document.getElementById('cfgPasswordMethod').value;
-  document.getElementById('pwGenOptions').style.display = method==='generated'||method==='nombre+grupo'||method==='pattern'?'block':'none';
-  document.getElementById('pwCedulaOptions').style.display = method.startsWith('cedula')?'block':'none';
-  document.getElementById('pwFixedOptions').style.display = method==='fixed'?'block':'none';
-  document.getElementById('pwPatternOptions').style.display = method==='pattern'?'block':'none';
-  if(method==='generated'||method==='nombre+grupo') {
-    document.getElementById('pwGenOptions').querySelector('select').style.display = method==='generated'?'block':'none';
-  }
-  updateConfigPreview();
-}
-document.getElementById('cfgPasswordMethod').addEventListener('change', updatePwConfigUI);
-
-// Sample student for preview
-const sampleStudent = { n1:'María', n2:'José', ap1:'González', ap2:'Pérez', grupo:'A', curso:'2CT-EMS', nro:'12' };
-
-function buildUsernameForStudent(s, existingUsernames) {
-  const pattern = document.getElementById('cfgUsernamePattern').value;
-  const maxLen = parseInt(document.getElementById('cfgUsernameMax').value)||20;
-  const norm = str => normalizeStr(str).replace(/[^a-z0-9]/g,'');
-
-  let base = '';
-  if(pattern==='ap1+hca') base = norm(s.ap1);
-  else if(pattern==='ini+ap1+hca') base = norm(s.n1).charAt(0) + norm(s.ap1);
-  else if(pattern==='ap1+ap2+hca') base = norm(s.ap1) + (s.ap2 ? norm(s.ap2).charAt(0) : '');
-  else if(pattern==='ap1+ini2+hca') base = norm(s.ap1) + (s.ap2 ? norm(s.ap2).charAt(0) : '');
-  else if(pattern==='n1+ap1+hca') base = norm(s.n1) + norm(s.ap1);
-  else if(pattern==='ini1+ap1+hca') base = norm(s.n1).charAt(0) + norm(s.ap1);
-  else if(pattern==='custom') {
-    const tmpl = document.getElementById('cfgUsernameCustom').value || '{ap1}hca';
-    base = tmpl
-      .replace(/{n1}/g, norm(s.n1))
-      .replace(/{n2}/g, norm(s.n2||''))
-      .replace(/{ap1}/g, norm(s.ap1))
-      .replace(/{ap2}/g, norm(s.ap2||''))
-      .replace(/{ini1}/g, norm(s.n1).charAt(0))
-      .replace(/{ini2}/g, norm(s.n2||'').charAt(0))
-      .replace(/{inia1}/g, norm(s.ap1).charAt(0))
-      .replace(/{inia2}/g, norm(s.ap2||'').charAt(0))
-      .replace(/{curso}/g, norm(s.curso))
-      .replace(/{grupo}/g, norm(s.grupo));
-    // Remove suffix handling for custom (suffix embedded in template)
-    base = base.replace(/[^a-z0-9]/g,'');
-    if(!base) base = 'alumno';
-    let username = base.substring(0, maxLen);
-    if(!existingUsernames) return username;
-    if(existingUsernames.has(username)) {
-      let i=2; while(existingUsernames.has(username.substring(0,maxLen-2)+i)) i++;
-      username = username.substring(0,maxLen-String(i).length)+i;
-    }
-    return username;
-  }
-
-  const suffix = document.getElementById('cfgUsernameSuffix').value || 'hca';
-  if(!base) base = 'alumno';
-  let username = (base + suffix).substring(0, maxLen);
-  if(!existingUsernames) return username;
-  if(existingUsernames.has(username)) {
-    const initN = norm(s.n1).charAt(0);
-    let candidate = (base + initN + suffix).substring(0, maxLen);
-    if(existingUsernames.has(candidate)) {
-      let i=2; while(existingUsernames.has((base + initN + i + suffix).substring(0,maxLen))) i++;
-      candidate = (base + initN + i + suffix).substring(0, maxLen);
-    }
-    username = candidate;
-  }
-  return username;
-}
-
-function buildPasswordForStudent(s) {
-  const method = document.getElementById('cfgPasswordMethod').value;
-  const norm = str => normalizeStr(str).replace(/[^a-z]/g,'');
-  const specials = '!@#$&*';
-  const randSp = () => specials[Math.floor(Math.random()*specials.length)];
-  const randN = n => String(Math.floor(Math.random() * Math.pow(10,n))).padStart(n,'0');
-  const cap = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : '';
-  const grupo = String(s.grupo||'').replace(/[^0-9]/g,'') || '0';
-
-  if(method==='fixed') {
-    const fixed = document.getElementById('cfgPwFixed').value || 'HCA2025!';
-    return validateAndPad(fixed);
-  }
-  if(method==='cedula' || method==='cedula+hca') {
-    const cedula = s.cedula || s.nro || '12345678';
-    return method==='cedula+hca' ? validateAndPad(cedula+'hca') : validateAndPad(cedula);
-  }
-
-  const pwPattern = document.getElementById('cfgPwPattern').value;
-  const n1 = norm(s.n1), ap1 = norm(s.ap1);
-
-  let pw = '';
-  if(method==='generated') {
-    if(pwPattern==='ini+ap+grupo+special+rand') {
-      pw = (n1.charAt(0)||'x').toUpperCase() + (n1.charAt(1)||'x') + (ap1.charAt(0)||'x') + (ap1.charAt(1)||'x') + grupo + randSp() + randN(2);
-    } else if(pwPattern==='n1+ap1+rand+special') {
-      pw = cap(n1.substring(0,3)) + (ap1.substring(0,3)) + randN(3) + randSp();
-    } else if(pwPattern==='ap1+n1+special+rand') {
-      pw = cap(ap1.substring(0,4)) + n1.substring(0,2) + randSp() + randN(2);
-    } else if(pwPattern==='rand_full') {
-      const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$&*';
-      pw = Array.from({length:10},()=>charset[Math.floor(Math.random()*charset.length)]).join('');
-    }
-  } else if(method==='nombre+grupo') {
-    pw = cap(n1.substring(0,3)) + grupo + randSp() + randN(2);
-  } else if(method==='pattern') {
-    const tmpl = document.getElementById('cfgPwCustomPattern').value || '{N1}{Ap1}{grupo}!{rnd2}';
-    pw = tmpl
-      .replace(/{N1}/g, cap(n1))
-      .replace(/{n1}/g, n1)
-      .replace(/{Ap1}/g, cap(ap1))
-      .replace(/{ap1}/g, ap1)
-      .replace(/{grupo}/g, grupo)
-      .replace(/{rnd2}/g, randN(2))
-      .replace(/{rnd4}/g, randN(4));
-  }
-
-  return validateAndPad(pw||'HCA'+randN(4)+'!');
-}
-
-function validateAndPad(pw) {
-  // Ensure Cambridge requirements: min 8 chars, at least 1 upper/lower, 1 digit
-  let s = pw;
-  if(!/[A-Z]/.test(s)) s = s.charAt(0).toUpperCase() + s.slice(1);
-  if(!/[a-z]/.test(s)) s = s.slice(0,-1) + 'a';
-  if(!/[0-9]/.test(s)) s += '1';
-  while(s.length < 8) s += String(Math.floor(Math.random()*10));
-  return s;
-}
-
-function passwordStrength(pw) {
-  let score = 0;
-  if(pw.length >= 8) score++;
-  if(pw.length >= 12) score++;
-  if(/[A-Z]/.test(pw) && /[a-z]/.test(pw)) score++;
-  if(/[0-9]/.test(pw)) score++;
-  if(/[!@#$&*^%]/.test(pw)) score++;
-  return Math.min(4, score);
-}
-
-function updateConfigPreview() {
-  // Read current values into cfg
-  cfg.usernamePattern = document.getElementById('cfgUsernamePattern').value;
-  cfg.usernameSuffix = document.getElementById('cfgUsernameSuffix').value;
-  cfg.usernameMax = parseInt(document.getElementById('cfgUsernameMax').value)||20;
-
-  const sampleUsername = buildUsernameForStudent(sampleStudent, null);
-  document.getElementById('usernamePreview').textContent = sampleUsername + ' (ej. para González María)';
-
-  const samplePw = buildPasswordForStudent(sampleStudent);
-  document.getElementById('passwordPreview').textContent = samplePw;
-
-  const strength = passwordStrength(samplePw);
-  const bar = document.getElementById('pwStrengthBar');
-  bar.className = 'pw-strength pw-s' + strength;
-  const labels = ['','Débil','Media','Buena','Fuerte'];
-  document.getElementById('pwStrengthLabel').textContent = labels[strength] || '';
-
-  // Requirements check
-  const reqs = [
-    { ok: samplePw.length >= 8, text: 'Mínimo 8 caracteres' },
-    { ok: /[A-Za-z]/.test(samplePw), text: 'Al menos 1 letra' },
-    { ok: /[0-9]/.test(samplePw), text: 'Al menos 1 número' },
-  ];
-  document.getElementById('pwRequirements').innerHTML = reqs.map(r =>
-    `<div style="color:${r.ok?'var(--success)':'var(--danger)'};">${r.ok?'✓':'✗'} ${r.text}</div>`
-  ).join('');
-
-  updateSplitPreview();
-}
-
-function applyConfigAndRegenerate() {
-  state.editedAccounts = {};
-  generateAccounts();
-  toast('Configuración aplicada y cuentas regeneradas', 'success');
+  document.getElementById('assignmentSummary').innerHTML=html;
 }
 
 // ===================== ACCOUNT GENERATION =====================
-function normalizeStr(s) {
-  return String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+function buildUsernameForStudent(s, existingUsernames){
+  const pattern=document.getElementById('cfgUsernamePattern').value;
+  const maxLen=parseInt(document.getElementById('cfgUsernameMax').value)||20;
+  const norm=str=>normalizeStr(str).replace(/[^a-z0-9]/g,'');
+  let base='';
+  if(pattern==='ap1+hca')base=norm(s.ap1);
+  else if(pattern==='ini+ap1+hca')base=norm(s.n1).charAt(0)+norm(s.ap1);
+  else if(pattern==='ap1+ap2+hca')base=norm(s.ap1)+(s.ap2?norm(s.ap2).charAt(0):'');
+  else if(pattern==='n1+ap1+hca')base=norm(s.n1)+norm(s.ap1);
+  else if(pattern==='ini1+ap1+hca')base=norm(s.n1).charAt(0)+norm(s.ap1);
+  else if(pattern==='custom'){
+    const tmpl=document.getElementById('cfgUsernameCustom').value||'{ap1}hca';
+    base=tmpl.replace(/{n1}/g,norm(s.n1)).replace(/{n2}/g,norm(s.n2||'')).replace(/{ap1}/g,norm(s.ap1)).replace(/{ap2}/g,norm(s.ap2||'')).replace(/{ini1}/g,norm(s.n1).charAt(0)).replace(/{ini2}/g,norm(s.n2||'').charAt(0)).replace(/{inia1}/g,norm(s.ap1).charAt(0)).replace(/{inia2}/g,norm(s.ap2||'').charAt(0)).replace(/[^a-z0-9]/g,'');
+    if(!base)base='alumno';
+    let u=base.substring(0,maxLen);
+    if(!existingUsernames)return u;
+    if(existingUsernames.has(u)){let i=2;while(existingUsernames.has(u.substring(0,maxLen-String(i).length)+i))i++;u=u.substring(0,maxLen-String(i).length)+i;}
+    return u;
+  }
+  const suffix=document.getElementById('cfgUsernameSuffix').value||'hca';
+  if(!base)base='alumno';
+  let u=(base+suffix).substring(0,maxLen);
+  if(!existingUsernames)return u;
+  if(existingUsernames.has(u)){
+    const initN=norm(s.n1).charAt(0);
+    let c=(base+initN+suffix).substring(0,maxLen);
+    if(existingUsernames.has(c)){let i=2;while(existingUsernames.has((base+initN+i+suffix).substring(0,maxLen)))i++;c=(base+initN+i+suffix).substring(0,maxLen);}
+    u=c;
+  }
+  return u;
 }
 
-function generateAccounts() {
-  const accounts = [];
-  const usedUsernames = new Set();
-  Object.entries(state.assignments).forEach(([gk, className]) => {
-    const [curso, grupo] = gk.split('|');
-    const classInfo = state.classKeys[className];
-    if(!classInfo) return;
-    const students = state.students.filter(s=>s.curso===curso&&s.grupo===grupo)
-      .sort((a,b)=>a.ap1.localeCompare(b.ap1)||a.n1.localeCompare(b.n1));
-    students.forEach(s => {
-      const username = buildUsernameForStudent(s, usedUsernames);
+function buildPasswordForStudent(s){
+  const method=document.getElementById('cfgPasswordMethod').value;
+  const norm=str=>normalizeStr(str).replace(/[^a-z]/g,'');
+  const specials='!@#$&*';
+  const randSp=()=>specials[Math.floor(Math.random()*specials.length)];
+  const randN=n=>String(Math.floor(Math.random()*Math.pow(10,n))).padStart(n,'0');
+  const cap=s=>s?s.charAt(0).toUpperCase()+s.slice(1):'';
+  const grupo=String(s.grupo||'').replace(/[^0-9]/g,'')||'0';
+  if(method==='fixed'){return validateAndPad(document.getElementById('cfgPwFixed').value||'HCA2025!');}
+  if(method==='cedula'||method==='cedula+hca'){const ced=s.cedula||s.nro||'12345678';return validateAndPad(method==='cedula+hca'?ced+'hca':ced);}
+  const pwPattern=document.getElementById('cfgPwPattern').value;
+  const n1=norm(s.n1),ap1=norm(s.ap1);
+  let pw='';
+  if(method==='generated'){
+    if(pwPattern==='ini+ap+grupo+special+rand')pw=(n1.charAt(0)||'x').toUpperCase()+(n1.charAt(1)||'x')+(ap1.charAt(0)||'x')+(ap1.charAt(1)||'x')+grupo+randSp()+randN(2);
+    else if(pwPattern==='n1+ap1+rand+special')pw=cap(n1.substring(0,3))+ap1.substring(0,3)+randN(3)+randSp();
+    else if(pwPattern==='ap1+n1+special+rand')pw=cap(ap1.substring(0,4))+n1.substring(0,2)+randSp()+randN(2);
+    else if(pwPattern==='rand_full'){const cs='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$&*';pw=Array.from({length:10},()=>cs[Math.floor(Math.random()*cs.length)]).join('');}
+  }else if(method==='nombre+grupo')pw=cap(n1.substring(0,3))+grupo+randSp()+randN(2);
+  else if(method==='pattern'){const tmpl=document.getElementById('cfgPwCustomPattern').value||'{N1}{Ap1}{grupo}!{rnd2}';pw=tmpl.replace(/{N1}/g,cap(n1)).replace(/{n1}/g,n1).replace(/{Ap1}/g,cap(ap1)).replace(/{ap1}/g,ap1).replace(/{grupo}/g,grupo).replace(/{rnd2}/g,randN(2)).replace(/{rnd4}/g,randN(4));}
+  return validateAndPad(pw||'HCA'+randN(4)+'!');
+}
+
+function validateAndPad(pw){
+  let s=pw;
+  if(!/[A-Z]/.test(s))s=s.charAt(0).toUpperCase()+s.slice(1);
+  if(!/[a-z]/.test(s))s=s.slice(0,-1)+'a';
+  if(!/[0-9]/.test(s))s+='1';
+  while(s.length<8)s+=String(Math.floor(Math.random()*10));
+  return s;
+}
+
+function passwordStrength(pw){
+  let score=0;
+  if(pw.length>=8)score++;if(pw.length>=12)score++;
+  if(/[A-Z]/.test(pw)&&/[a-z]/.test(pw))score++;
+  if(/[0-9]/.test(pw))score++;if(/[!@#$&*^%]/.test(pw))score++;
+  return Math.min(4,score);
+}
+
+const sampleStudent={n1:'María',n2:'José',ap1:'González',ap2:'Pérez',grupo:'A',curso:'2CT-EMS',nro:'12'};
+
+function updateConfigPreview(){
+  const su=buildUsernameForStudent(sampleStudent,null);
+  document.getElementById('usernamePreview').textContent=su+' (ej. González María)';
+  const sp=buildPasswordForStudent(sampleStudent);
+  document.getElementById('passwordPreview').textContent=sp;
+  const str=passwordStrength(sp);
+  document.getElementById('pwStrengthBar').className='pw-strength pw-s'+str;
+  document.getElementById('pwStrengthLabel').textContent=['','Débil','Media','Buena','Fuerte'][str]||'';
+  document.getElementById('pwRequirements').innerHTML=[
+    {ok:sp.length>=8,text:'Mínimo 8 caracteres'},
+    {ok:/[A-Za-z]/.test(sp),text:'Al menos 1 letra'},
+    {ok:/[0-9]/.test(sp),text:'Al menos 1 número'},
+  ].map(r=>`<div style="color:${r.ok?'var(--success)':'var(--danger)'};">${r.ok?'✓':'✗'} ${r.text}</div>`).join('');
+  updateSplitPreview();
+}
+
+function updatePwConfigUI(){
+  const m=document.getElementById('cfgPasswordMethod').value;
+  document.getElementById('pwGenOptions').style.display=(m==='generated'||m==='nombre+grupo')?'block':'none';
+  document.getElementById('pwFixedOptions').style.display=m==='fixed'?'block':'none';
+  document.getElementById('pwPatternOptions').style.display=m==='pattern'?'block':'none';
+  updateConfigPreview();
+}
+document.getElementById('cfgPasswordMethod').addEventListener('change',updatePwConfigUI);
+document.getElementById('cfgUsernamePattern').addEventListener('change',function(){
+  document.getElementById('customUsernameGroup').style.display=this.value==='custom'?'block':'none';
+  updateConfigPreview();
+});
+
+function applyConfigAndRegenerate(){
+  state.editedAccounts={};
+  generateSigedAccounts();
+  // Regenerate english accounts too
+  if(state.engStudents.length&&Object.keys(state.engAssignments).length) applyEngGroups();
+  toast('Configuración aplicada','success');
+}
+
+// ===================== SIGED ACCOUNT GENERATION =====================
+function generateSigedAccounts(){
+  // Remove siged accounts, keep english accounts
+  state.accounts=state.accounts.filter(a=>a.source==='english');
+  const usedUsernames=new Set(state.accounts.map(a=>a.username));
+
+  Object.entries(state.assignments).forEach(([gk,className])=>{
+    const [curso,grupo]=gk.split('|');
+    const classInfo=state.classKeys[className];
+    if(!classInfo)return;
+    const students=state.students.filter(s=>s.curso===curso&&s.grupo===grupo).sort((a,b)=>a.ap1.localeCompare(b.ap1)||a.n1.localeCompare(b.n1));
+    students.forEach(s=>{
+      const username=buildUsernameForStudent(s,usedUsernames);
       usedUsernames.add(username);
-      const password = buildPasswordForStudent(s);
-      accounts.push({
-        className, classKey: classInfo.code,
-        firstName: s.n1 + (s.n2?' '+s.n2:''),
-        lastName: s.ap1 + (s.ap2?' '+s.ap2:''),
-        username, password, curso: s.curso, grupo: s.grupo, fullName: s.fullName
-      });
+      const password=buildPasswordForStudent(s);
+      state.accounts.push({className,classKey:classInfo.code,firstName:s.n1+(s.n2?' '+s.n2:''),lastName:s.ap1+(s.ap2?' '+s.ap2:''),username,password,curso:s.curso,grupo:s.grupo,fullName:s.fullName,source:'siged',levelTag:'',engClassName:''});
     });
   });
-  state.accounts = accounts;
-  Object.entries(state.editedAccounts).forEach(([idx,edits]) => {
-    const i = parseInt(idx);
-    if(state.accounts[i]) Object.assign(state.accounts[i], edits);
-  });
-  document.getElementById('accountsBadge').textContent = accounts.length;
-  updateAccountFilters(); renderAccounts(); updateExportFilters(); updateSplitPreview();
+
+  document.getElementById('accountsBadge').textContent=state.accounts.length;
+  updateAccountFilters();renderAccounts();updateExportFilters();updateExportSplitPreview();
 }
 
-function updateAccountFilters() {
-  const classes = [...new Set(state.accounts.map(a=>a.className))].sort();
-  document.getElementById('accountFilter').innerHTML = '<option value="all">Todas</option>' + classes.map(c=>`<option value="${c}">${c}</option>`).join('');
+function updateAccountFilters(){
+  const classes=[...new Set(state.accounts.map(a=>a.className))].sort();
+  document.getElementById('accountFilter').innerHTML='<option value="all">Todas</option>'+classes.map(c=>`<option value="${c}">${c}</option>`).join('');
 }
 
-function renderAccounts() {
-  let f = [...state.accounts];
-  const cls = document.getElementById('accountFilter').value;
-  const search = document.getElementById('accountSearch').value.toLowerCase();
-  if(cls!=='all') f=f.filter(a=>a.className===cls);
-  if(search) f=f.filter(a=>a.firstName.toLowerCase().includes(search)||a.lastName.toLowerCase().includes(search)||a.username.toLowerCase().includes(search));
-  document.getElementById('accountsBody').innerHTML = f.map(a => {
-    const ri = state.accounts.indexOf(a);
-    const edited = state.editedAccounts[ri]?' edited':'';
+function renderAccounts(){
+  let f=[...state.accounts];
+  const cls=document.getElementById('accountFilter').value;
+  const src=document.getElementById('accountSourceFilter').value;
+  const search=document.getElementById('accountSearch').value.toLowerCase();
+  if(cls!=='all')f=f.filter(a=>a.className===cls);
+  if(src!=='all')f=f.filter(a=>a.source===src);
+  if(search)f=f.filter(a=>a.firstName.toLowerCase().includes(search)||a.lastName.toLowerCase().includes(search)||a.username.toLowerCase().includes(search));
+  const levelColors={fce:'status-ok',cae:'status-warn',cpe:'status-purple','':{class:''}};
+  document.getElementById('accountsBody').innerHTML=f.map(a=>{
+    const ri=state.accounts.indexOf(a);
+    const edited=state.editedAccounts[ri]?' edited':'';
+    const lvl=a.levelTag?`<span class="status ${a.levelTag==='fce'?'status-ok':a.levelTag==='cae'?'status-warn':a.levelTag==='cpe'?'status-purple':'status-ok'}" style="font-size:10px;">${a.levelTag.toUpperCase()}</span>`:
+      `<span style="font-size:11px;color:var(--text-dim);">SIGED</span>`;
+    const src=a.source==='english'?'🇬🇧':'📋';
     return `<tr class="${edited}">
       <td><input type="checkbox" data-idx="${ri}"></td>
       <td><span class="status status-ok" style="font-size:10px;">${a.className}</span></td>
+      <td>${lvl}</td>
       <td><input type="text" value="${escapeHtml(a.firstName)}" onchange="editAccount(${ri},'firstName',this.value)"></td>
       <td><input type="text" value="${escapeHtml(a.lastName)}" onchange="editAccount(${ri},'lastName',this.value)"></td>
       <td><input type="text" value="${escapeHtml(a.username)}" onchange="editAccount(${ri},'username',this.value)" style="font-family:var(--mono);font-size:11px;"></td>
       <td><input type="text" value="${escapeHtml(a.password)}" onchange="editAccount(${ri},'password',this.value)" style="font-family:var(--mono);font-size:11px;"></td>
       <td style="font-family:var(--mono);font-size:11px;color:var(--accent);">${a.classKey}</td>
-      <td style="text-align:center;color:var(--success);">✓</td>
+      <td style="text-align:center;">${src}</td>
     </tr>`;
   }).join('');
-  document.getElementById('accountStats').innerHTML = `
-    <div class="stat-card"><div class="number">${state.accounts.length}</div><div class="label-text">Total Cuentas</div></div>
+  document.getElementById('accountStats').innerHTML=`
+    <div class="stat-card"><div class="number">${state.accounts.length}</div><div class="label-text">Total</div></div>
+    <div class="stat-card"><div class="number">${state.accounts.filter(a=>a.source==='siged').length}</div><div class="label-text">SIGED</div></div>
+    <div class="stat-card"><div class="number">${state.accounts.filter(a=>a.source==='english').length}</div><div class="label-text">Inglés</div></div>
     <div class="stat-card"><div class="number">${new Set(state.accounts.map(a=>a.className)).size}</div><div class="label-text">Clases</div></div>
     <div class="stat-card"><div class="number">${Object.keys(state.editedAccounts).length}</div><div class="label-text">Editadas</div></div>
     <div class="stat-card"><div class="number">${f.length}</div><div class="label-text">Mostrando</div></div>`;
 }
 
-function editAccount(idx, field, value) {
-  if(!state.editedAccounts[idx]) state.editedAccounts[idx]={};
-  state.editedAccounts[idx][field] = value;
-  state.accounts[idx][field] = value;
+function editAccount(idx,field,value){
+  if(!state.editedAccounts[idx])state.editedAccounts[idx]={};
+  state.editedAccounts[idx][field]=value;state.accounts[idx][field]=value;
 }
-
-function deleteSelected() {
-  const idxs = [...document.querySelectorAll('#accountsBody input[type="checkbox"]:checked')].map(cb=>parseInt(cb.dataset.idx)).sort((a,b)=>b-a);
-  if(!idxs.length) { toast('Seleccioná al menos una cuenta', 'error'); return; }
-  idxs.forEach(i => state.accounts.splice(i,1));
-  state.editedAccounts = {};
-  renderAccounts(); updateExportFilters(); updateSplitPreview();
-  toast(`${idxs.length} cuentas eliminadas`, 'info');
+function deleteSelected(){
+  const idxs=[...document.querySelectorAll('#accountsBody input[type="checkbox"]:checked')].map(cb=>parseInt(cb.dataset.idx)).sort((a,b)=>b-a);
+  if(!idxs.length){toast('Seleccioná al menos una cuenta','error');return;}
+  idxs.forEach(i=>state.accounts.splice(i,1));state.editedAccounts={};
+  renderAccounts();updateExportFilters();toast(`${idxs.length} cuentas eliminadas`,'info');
 }
-
-function toggleSelectAll() {
-  const checked = document.getElementById('selectAll').checked;
-  document.querySelectorAll('#accountsBody input[type="checkbox"]').forEach(cb=>cb.checked=checked);
-}
-
-function regenerateAllPasswords() {
-  state.accounts.forEach((a,i) => {
-    const parts = a.firstName.split(' '), apParts = a.lastName.split(' ');
-    const fakeS = { n1:parts[0]||'', n2:parts[1]||'', ap1:apParts[0]||'', ap2:apParts[1]||'', grupo:a.grupo||'0', nro:'' };
-    const newPw = buildPasswordForStudent(fakeS);
-    a.password = newPw;
-    if(state.editedAccounts[i]) state.editedAccounts[i].password = newPw;
+function toggleSelectAll(){const checked=document.getElementById('selectAll').checked;document.querySelectorAll('#accountsBody input[type="checkbox"]').forEach(cb=>cb.checked=checked);}
+function regenerateAllPasswords(){
+  state.accounts.forEach((a,i)=>{
+    const ps=a.firstName.split(' '),aps=a.lastName.split(' ');
+    const fakeS={n1:ps[0]||'',n2:ps[1]||'',ap1:aps[0]||'',ap2:aps[1]||'',grupo:a.grupo||'0',nro:''};
+    const pw=buildPasswordForStudent(fakeS);a.password=pw;
+    if(state.editedAccounts[i])state.editedAccounts[i].password=pw;
   });
-  renderAccounts(); toast('Contraseñas regeneradas', 'success');
+  renderAccounts();toast('Contraseñas regeneradas','success');
 }
 
-function escapeHtml(s) {
-  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
-// ===================== EXPORT / SPLIT =====================
-function updateExportFilters() {
-  const classes = [...new Set(state.accounts.map(a=>a.className))].sort();
-  const sel = document.getElementById('exportClass');
-  sel.innerHTML = '<option value="all">Todas las clases</option>' + classes.map(c=>`<option value="${c}">${c}</option>`).join('');
-  const expStats = document.getElementById('exportStats');
-  if(expStats) expStats.innerHTML = `
-    <div class="stat-card"><div class="number">${state.accounts.length}</div><div class="label-text">Total Cuentas</div></div>
+// ===================== EXPORT =====================
+function updateExportFilters(){
+  const classes=[...new Set(state.accounts.map(a=>a.className))].sort();
+  document.getElementById('exportClass').innerHTML='<option value="all">Todas</option>'+classes.map(c=>`<option value="${c}">${c}</option>`).join('');
+  const es=document.getElementById('exportStats');
+  if(es)es.innerHTML=`
+    <div class="stat-card"><div class="number">${state.accounts.length}</div><div class="label-text">Total</div></div>
     <div class="stat-card"><div class="number">${Object.keys(state.classKeys).length}</div><div class="label-text">Clases</div></div>
-    <div class="stat-card"><div class="number">${Object.keys(state.assignments).length}</div><div class="label-text">Grupos</div></div>`;
+    <div class="stat-card"><div class="number">${Object.keys(state.assignments).length+Object.keys(state.engAssignments).length}</div><div class="label-text">Grupos Asignados</div></div>`;
 }
 
-function getChunks() {
-  const cls = document.getElementById('exportClass')?.value || 'all';
-  const splitBy = document.getElementById('exportSplitBy')?.value || 'config';
-  const actualSplitBy = splitBy==='config' ? cfg.csvSplitBy : splitBy;
-  const chunkSize = cfg.csvChunkSize;
-
-  let accounts = cls==='all' ? state.accounts : state.accounts.filter(a=>a.className===cls);
-  if(!accounts.length) return [];
-
-  if(actualSplitBy==='class') {
-    const byClass = {};
-    accounts.forEach(a => { if(!byClass[a.className]) byClass[a.className]=[]; byClass[a.className].push(a); });
-    return Object.entries(byClass).map(([cn,accs]) => ({ label:cn.replace(/\s+/g,'_'), accounts:accs }));
-  } else {
-    const chunks = [];
-    for(let i=0;i<accounts.length;i+=chunkSize) {
-      chunks.push({ label:`parte_${Math.floor(i/chunkSize)+1}`, accounts:accounts.slice(i,i+chunkSize) });
-    }
+function getChunks(){
+  const cls=document.getElementById('exportClass')?.value||'all';
+  const splitBy=document.getElementById('exportSplitBy')?.value||'config';
+  const actualSplitBy=splitBy==='config'?cfg.csvSplitBy:splitBy;
+  const chunkSize=cfg.csvChunkSize;
+  let accounts=cls==='all'?state.accounts:state.accounts.filter(a=>a.className===cls);
+  if(!accounts.length)return[];
+  if(actualSplitBy==='class'){
+    const bc={};accounts.forEach(a=>{if(!bc[a.className])bc[a.className]=[];bc[a.className].push(a);});
+    return Object.entries(bc).map(([cn,accs])=>({label:cn.replace(/\s+/g,'_').replace(/[°º]/g,'').replace(/[^a-zA-Z0-9_]/g,''),accounts:accs}));
+  }else{
+    const chunks=[];
+    for(let i=0;i<accounts.length;i+=chunkSize)chunks.push({label:`parte_${Math.floor(i/chunkSize)+1}`,accounts:accounts.slice(i,i+chunkSize)});
     return chunks;
   }
 }
 
-function updateSplitPreview() {
-  cfg.csvChunkSize = parseInt(document.getElementById('cfgCsvChunkSize')?.value)||200;
-  cfg.csvSplitBy = document.getElementById('cfgCsvSplitBy')?.value||'count';
-
-  const chunks = getChunks();
-  const target = document.getElementById('splitPreview') || document.getElementById('exportSplitPreview');
-  if(!target) return;
-  if(!chunks.length) { target.innerHTML = '<p style="font-size:13px;color:var(--text-dim);">No hay cuentas para mostrar.</p>'; return; }
-
-  let html = `<div style="margin-bottom:8px;font-size:12px;color:var(--text-dim);">Se generarán <strong style="color:var(--accent);">${chunks.length}</strong> archivo(s):</div>`;
-  html += '<div style="display:flex;flex-wrap:wrap;gap:4px;">';
-  chunks.forEach((c,i) => {
-    html += `<div class="split-badge">📄 HCA_accounts_${c.label}.csv <span style="color:var(--text-dim);">(${c.accounts.length})</span></div>`;
-  });
-  html += '</div>';
-  target.innerHTML = html;
+function updateSplitPreview(){
+  cfg.csvChunkSize=parseInt(document.getElementById('cfgCsvChunkSize')?.value)||200;
+  cfg.csvSplitBy=document.getElementById('cfgCsvSplitBy')?.value||'count';
+  const chunks=getChunks();
+  const target=document.getElementById('splitPreview');
+  if(!target)return;
+  if(!chunks.length){target.innerHTML='<p style="font-size:13px;color:var(--text-dim);">No hay cuentas aún.</p>';return;}
+  target.innerHTML=`<div style="margin-bottom:6px;font-size:12px;color:var(--text-dim);">Se generarán <strong style="color:var(--accent);">${chunks.length}</strong> archivo(s):</div><div style="display:flex;flex-wrap:wrap;gap:3px;">${chunks.map(c=>`<div class="split-badge">📄 HCA_${c.label}.csv <span style="color:var(--text-dim);">(${c.accounts.length})</span></div>`).join('')}</div>`;
 }
 
-function buildCSVContent(accounts) {
-  let csv = "\uFEFFStudent's First name,Student's Last name,Username,Password,Class key\n";
-  accounts.forEach(a => {
-    csv += `${csvEscape(a.firstName)},${csvEscape(a.lastName)},${csvEscape(a.username)},${csvEscape(a.password)},${csvEscape(a.classKey)}\n`;
-  });
+function updateExportSplitPreview(){
+  const chunks=getChunks();
+  const target=document.getElementById('exportSplitPreview');
+  if(!target)return;
+  if(!chunks.length){target.innerHTML='<p style="font-size:13px;color:var(--text-dim);">No hay cuentas.</p>';return;}
+  target.innerHTML=`<div style="margin-bottom:6px;font-size:12px;color:var(--text-dim);">Se descargarán <strong style="color:var(--accent);">${chunks.length}</strong> archivo(s):</div><div style="display:flex;flex-wrap:wrap;gap:3px;">${chunks.map(c=>`<div class="split-badge">📄 HCA_${c.label}.csv <span style="color:var(--text-dim);">(${c.accounts.length})</span></div>`).join('')}</div>`;
+}
+
+function buildCSVContent(accounts){
+  let csv="\uFEFFStudent's First name,Student's Last name,Username,Password,Class key\n";
+  accounts.forEach(a=>{csv+=`${csvEscape(a.firstName)},${csvEscape(a.lastName)},${csvEscape(a.username)},${csvEscape(a.password)},${csvEscape(a.classKey)}\n`;});
   return csv;
 }
+function csvEscape(s){s=String(s);if(s.includes(',')||s.includes('"')||s.includes('\n'))return'"'+s.replace(/"/g,'""')+'"';return s;}
 
-function csvEscape(s) {
-  s = String(s);
-  if(s.includes(',') || s.includes('"') || s.includes('\n')) return '"' + s.replace(/"/g,'""') + '"';
-  return s;
+function exportAllCSVFiles(){
+  if(!state.accounts.length){toast('No hay cuentas','error');return;}
+  const chunks=getChunks();
+  chunks.forEach((c,i)=>{setTimeout(()=>{download(buildCSVContent(c.accounts),`HCA_${c.label}.csv`,'text/csv;charset=utf-8');},i*350);});
+  toast(`${chunks.length} CSV descargando...`,'success');
 }
 
-function exportAllCSVFiles() {
-  if(!state.accounts.length) { toast('No hay cuentas generadas', 'error'); return; }
-  const chunks = getChunks();
-  if(chunks.length === 1) {
-    download(buildCSVContent(chunks[0].accounts), `HCA_accounts_${chunks[0].label}.csv`, 'text/csv;charset=utf-8');
-    toast('CSV descargado', 'success');
-  } else {
-    // Download with small delays
-    chunks.forEach((c,i) => {
-      setTimeout(() => {
-        download(buildCSVContent(c.accounts), `HCA_accounts_${c.label}.csv`, 'text/csv;charset=utf-8');
-      }, i*300);
-    });
-    toast(`${chunks.length} archivos CSV descargando...`, 'success');
-  }
+function previewCSV(){
+  if(!state.accounts.length){toast('No hay cuentas','error');return;}
+  const chunks=getChunks();
+  const pre=document.getElementById('csvPreview');
+  pre.textContent=chunks.map(c=>`=== ${c.label} (${c.accounts.length}) ===\n`+buildCSVContent(c.accounts)).join('\n\n');
+  pre.style.display=pre.style.display==='none'?'block':'none';
 }
 
-function previewCSV() {
-  if(!state.accounts.length) { toast('No hay cuentas', 'error'); return; }
-  const chunks = getChunks();
-  const pre = document.getElementById('csvPreview');
-  const preview = chunks.map(c => `=== ${c.label} (${c.accounts.length} cuentas) ===\n` + buildCSVContent(c.accounts)).join('\n\n');
-  pre.textContent = preview;
-  pre.style.display = pre.style.display==='none' ? 'block' : 'none';
-}
-
-function exportPrintable() {
-  if(!state.accounts.length) { toast('No hay cuentas', 'error'); return; }
-  const byClass = {};
-  state.accounts.forEach(a => { if(!byClass[a.className]) byClass[a.className]=[]; byClass[a.className].push(a); });
-  let html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>HCA — Cuentas Cambridge</title>
-  <style>body{font-family:Arial,sans-serif;font-size:11px;margin:20px;}h2{color:#242B59;border-bottom:2px solid #242B59;padding-bottom:4px;margin-top:30px;page-break-before:always;}h2:first-of-type{page-break-before:avoid;}table{width:100%;border-collapse:collapse;margin-top:10px;}th{background:#242B59;color:white;padding:6px 10px;text-align:left;font-size:10px;}td{padding:5px 10px;border-bottom:1px solid #ddd;}tr:nth-child(even){background:#f5f5f5;}.code{font-family:monospace;}@media print{h2{page-break-before:always;}h2:first-of-type{page-break-before:avoid;}}</style>
-  </head><body>
-  <h1 style="color:#242B59;">Colegio HCA — Cuentas Cambridge English</h1>
-  <p>Generado: ${new Date().toLocaleDateString('es-UY')}</p>`;
-  Object.entries(byClass).sort().forEach(([cls,accs]) => {
-    const key = state.classKeys[cls];
-    html += `<h2>${cls} <span style="font-weight:normal;font-size:12px;color:#666;">— Código: ${key?.code||'?'}</span></h2>`;
-    html += `<table><tr><th>#</th><th>Nombre</th><th>Apellido</th><th>Usuario</th><th>Contraseña</th></tr>`;
-    accs.forEach((a,i) => { html += `<tr><td>${i+1}</td><td>${a.firstName}</td><td>${a.lastName}</td><td class="code">${a.username}</td><td class="code">${a.password}</td></tr>`; });
-    html += '</table>';
+function exportPrintable(){
+  if(!state.accounts.length){toast('No hay cuentas','error');return;}
+  const byClass={};state.accounts.forEach(a=>{if(!byClass[a.className])byClass[a.className]=[];byClass[a.className].push(a);});
+  let html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>HCA — Cuentas Cambridge</title>
+  <style>body{font-family:Arial,sans-serif;font-size:11px;margin:20px;}h2{color:#242B59;border-bottom:2px solid #242B59;padding-bottom:4px;margin-top:30px;page-break-before:always;}h2:first-of-type{page-break-before:avoid;}table{width:100%;border-collapse:collapse;margin-top:10px;}th{background:#242B59;color:white;padding:6px 10px;text-align:left;font-size:10px;}td{padding:5px 10px;border-bottom:1px solid #ddd;}tr:nth-child(even){background:#f5f5f5;}.code{font-family:monospace;}</style></head><body>
+  <h1 style="color:#242B59;">Colegio HCA — Cuentas Cambridge English</h1><p>Generado: ${new Date().toLocaleDateString('es-UY')}</p>`;
+  Object.entries(byClass).sort().forEach(([cls,accs])=>{
+    const key=state.classKeys[cls];
+    html+=`<h2>${cls} — <span style="font-weight:normal;font-size:12px;color:#666;">Código: ${key?.code||'?'}</span></h2>`;
+    html+=`<table><tr><th>#</th><th>Nombre</th><th>Apellido</th><th>Usuario</th><th>Contraseña</th><th>Nivel</th></tr>`;
+    accs.forEach((a,i)=>{html+=`<tr><td>${i+1}</td><td>${a.firstName}</td><td>${a.lastName}</td><td class="code">${a.username}</td><td class="code">${a.password}</td><td>${a.levelTag?a.levelTag.toUpperCase():'—'}</td></tr>`;});
+    html+='</table>';
   });
-  html += '</body></html>';
-  download(html, 'HCA_cuentas_imprimible.html', 'text/html;charset=utf-8');
-  toast('Listado imprimible generado', 'success');
+  html+='</body></html>';
+  download(html,'HCA_cuentas_imprimible.html','text/html;charset=utf-8');
+  toast('Listado generado','success');
 }
 
-// ===================== SAVE / LOAD =====================
-function saveProgress() {
-  const data = JSON.stringify({ version:2, timestamp:new Date().toISOString(), cfg, students:state.students, classKeys:state.classKeys, assignments:state.assignments, accounts:state.accounts, editedAccounts:state.editedAccounts }, null, 2);
-  download(data, `HCA_progreso_${new Date().toISOString().slice(0,10)}.json`, 'application/json');
-  toast('Progreso guardado', 'success');
+// ===================== SAVE/LOAD =====================
+function saveProgress(){
+  const data=JSON.stringify({version:3,timestamp:new Date().toISOString(),cfg,students:state.students,classKeys:state.classKeys,assignments:state.assignments,engAssignments:state.engAssignments,accounts:state.accounts,editedAccounts:state.editedAccounts,engStudents:state.engStudents},null,2);
+  download(data,`HCA_progreso_${new Date().toISOString().slice(0,10)}.json`,'application/json');
+  toast('Progreso guardado','success');
 }
 
-function loadProgress(file) {
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    try {
-      const data = JSON.parse(e.target.result);
-      if(data.cfg) Object.assign(cfg, data.cfg);
-      if(data.students) state.students = data.students;
-      if(data.classKeys) state.classKeys = data.classKeys;
-      if(data.assignments) state.assignments = data.assignments;
-      if(data.accounts) state.accounts = data.accounts;
-      if(data.editedAccounts) state.editedAccounts = data.editedAccounts;
-      // Restore config UI
-      if(data.cfg) {
-        const map = {cfgUsernamePattern:'usernamePattern',cfgUsernameSuffix:'usernameSuffix',cfgUsernameMax:'usernameMax',cfgPasswordMethod:'passwordMethod',cfgPwLength:'pwLength',cfgPwFixed:'pwFixed',cfgPwCustomPattern:'pwCustomPattern',cfgCsvChunkSize:'csvChunkSize',cfgCsvSplitBy:'csvSplitBy'};
-        Object.entries(map).forEach(([elId,cfgKey]) => { const el=document.getElementById(elId); if(el&&cfg[cfgKey]!==undefined) el.value=cfg[cfgKey]; });
-        const cbs = {cfgPwUppercase:'pwUppercase',cfgPwNumbers:'pwNumbers',cfgPwSpecial:'pwSpecial'};
-        Object.entries(cbs).forEach(([elId,cfgKey]) => { const el=document.getElementById(elId); if(el) el.checked=!!cfg[cfgKey]; });
-        if(cfg.usernamePattern==='custom') document.getElementById('customUsernameGroup').style.display='block';
+function loadProgress(file){
+  const reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      const data=JSON.parse(e.target.result);
+      if(data.cfg)Object.assign(cfg,data.cfg);
+      if(data.students)state.students=data.students;
+      if(data.classKeys)state.classKeys=data.classKeys;
+      if(data.assignments)state.assignments=data.assignments;
+      if(data.engAssignments)state.engAssignments=data.engAssignments;
+      if(data.accounts)state.accounts=data.accounts;
+      if(data.editedAccounts)state.editedAccounts=data.editedAccounts;
+      if(data.engStudents){
+        state.engStudents=data.engStudents;
+        document.getElementById('engBadge').textContent=state.engStudents.length;
+        updateEngCrossrefFilters();renderEngCrossref();
+        document.getElementById('engCrossrefCard').style.display=state.engStudents.length?'block':'none';
       }
-      updateImportStats(); updatePreviewFilters(); renderPreview();
-      renderClassKeys(); updateAssignmentUI();
-      document.getElementById('accountsBadge').textContent = state.accounts.length;
-      updateAccountFilters(); renderAccounts(); updateExportFilters(); updateSplitPreview();
-      const dz = document.getElementById('dropProgress');
-      dz.innerHTML = `<span class="icon">✅</span><div class="label">${file.name}</div><div class="hint">Restaurado — ${data.timestamp?new Date(data.timestamp).toLocaleString('es-UY'):''}</div>`;
-      dz.style.borderColor = 'var(--success)';
-      toast(`Progreso cargado: ${state.students.length} estudiantes, ${state.accounts.length} cuentas`, 'success');
-    } catch(err) { toast('Error: ' + err.message, 'error'); }
+      if(data.cfg){
+        const map={cfgUsernamePattern:'usernamePattern',cfgUsernameSuffix:'usernameSuffix',cfgUsernameMax:'usernameMax',cfgPasswordMethod:'passwordMethod',cfgPwPattern:'pwPattern',cfgPwFixed:'pwFixed',cfgPwCustomPattern:'pwCustomPattern',cfgCsvChunkSize:'csvChunkSize',cfgCsvSplitBy:'csvSplitBy'};
+        Object.entries(map).forEach(([elId,cfgKey])=>{const el=document.getElementById(elId);if(el&&cfg[cfgKey]!==undefined)el.value=cfg[cfgKey];});
+        if(cfg.usernamePattern==='custom')document.getElementById('customUsernameGroup').style.display='block';
+      }
+      updateImportStats();updatePreviewFilters();renderPreview();renderClassKeys();updateAssignmentUI();updateEngAssignUI();
+      document.getElementById('accountsBadge').textContent=state.accounts.length;
+      updateAccountFilters();renderAccounts();updateExportFilters();
+      const dz=document.getElementById('dropProgress');
+      dz.innerHTML=`<span class="icon">✅</span><div class="label">${file.name}</div><div class="hint">${data.timestamp?new Date(data.timestamp).toLocaleString('es-UY'):''}</div>`;
+      dz.style.borderColor='var(--success)';
+      toast(`Progreso cargado: ${state.students.length} SIGED + ${state.engStudents.length} inglés = ${state.accounts.length} cuentas`,'success');
+    }catch(err){toast('Error: '+err.message,'error');}
   };
   reader.readAsText(file);
-}
-
-// ===================== UTILS =====================
-function download(content, filename, type) {
-  const blob = new Blob([content], {type});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = filename;
-  document.body.appendChild(a); a.click();
-  setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
 }
 
 // ===================== INIT =====================
